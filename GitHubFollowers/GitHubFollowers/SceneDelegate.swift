@@ -16,12 +16,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Set the Main Interface
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = createTabbarController()
+        window                      = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene         = windowScene
+        window?.rootViewController  = createTabbarController()
         window?.makeKeyAndVisible()
+        
+        configureNavigationBar()
     }
     
+    // MARK: - Configure methods -
     func createSearchNavigationViewController() -> UINavigationController {
         let searchViewController = SearchViewController()
         searchViewController.title = "SEARCH"
@@ -40,11 +43,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createTabbarController() -> UITabBarController {
         let tabbar = UITabBarController()
-        UITabBar.appearance().tintColor = .systemBlue
+        UITabBar.appearance().tintColor = .systemRed
         tabbar.viewControllers = [createSearchNavigationViewController(), createFavoritesNavigationViewController()]
         return tabbar
     }
+    
+    func configureNavigationBar() {
+        UINavigationBar.appearance().tintColor = .systemRed
+    }
 
+    // MARK: - SceneDelegate methods -
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

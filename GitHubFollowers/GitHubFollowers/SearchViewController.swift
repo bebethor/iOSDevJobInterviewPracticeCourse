@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     // MARK: - UI Elements -
     let logoImageView: UIImageView   = UIImageView()
     let userTextField: GHFTextField  = GHFTextField()
-    let button: GHFButton            = GHFButton(backgroundColor: .systemGreen, title: "Get followers")
+    let button: GHFButton            = GHFButton(backgroundColor: .systemRed, title: "Get followers")
     
     // MARK: - Life cycle
     override func viewDidLoad() {

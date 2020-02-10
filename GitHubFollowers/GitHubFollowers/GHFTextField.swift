@@ -13,6 +13,7 @@ class GHFTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         // Custom code here
+        configure()
     }
     
     // Story board initializer

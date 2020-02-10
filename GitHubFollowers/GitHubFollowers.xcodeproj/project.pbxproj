@@ -16,6 +16,7 @@
 		BF59A10223EB1A82009A3200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF59A10123EB1A82009A3200 /* Assets.xcassets */; };
 		BF59A10523EB1A82009A3200 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF59A10323EB1A82009A3200 /* LaunchScreen.storyboard */; };
 		BF59A11023EB1A82009A3200 /* GitHubFollowersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59A10F23EB1A82009A3200 /* GitHubFollowersTests.swift */; };
+		BF6169E423F1BE65002FEFB8 /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6169E323F1BE65002FEFB8 /* FollowersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		BF59A10B23EB1A82009A3200 /* GitHubFollowersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubFollowersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF59A10F23EB1A82009A3200 /* GitHubFollowersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubFollowersTests.swift; sourceTree = "<group>"; };
 		BF59A11123EB1A82009A3200 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF6169E323F1BE65002FEFB8 /* FollowersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				BF59A10323EB1A82009A3200 /* LaunchScreen.storyboard */,
 				BF59A10623EB1A82009A3200 /* Info.plist */,
 				BF4EFF1723F187C10050177E /* SearchViewController.swift */,
+				BF6169E323F1BE65002FEFB8 /* FollowersViewController.swift */,
 				BF4EFF1923F188420050177E /* FavoritesViewController.swift */,
 				BF4EFF1B23F19E7E0050177E /* GHFButton.swift */,
 				BF4EFF1D23F1A62A0050177E /* GHFTextField.swift */,
@@ -207,6 +210,7 @@
 			files = (
 				BF4EFF1823F187C10050177E /* SearchViewController.swift in Sources */,
 				BF59A0F923EB1A80009A3200 /* AppDelegate.swift in Sources */,
+				BF6169E423F1BE65002FEFB8 /* FollowersViewController.swift in Sources */,
 				BF4EFF1A23F188420050177E /* FavoritesViewController.swift in Sources */,
 				BF4EFF1C23F19E7E0050177E /* GHFButton.swift in Sources */,
 				BF59A0FB23EB1A80009A3200 /* SceneDelegate.swift in Sources */,

@@ -23,7 +23,7 @@ class SearchViewController: UIViewController {
         configureLogoImageView()
         configureUserTextField()
         configureButton()
-        createDismissKeyBoardTapGesture()
+        dismissKeyBoardTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +47,7 @@ class SearchViewController: UIViewController {
     
     func configureUserTextField() {
         view.addSubview(userTextField)
+        userTextField.delegate = self
         NSLayoutConstraint.activate([
             userTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
             userTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50), // left
@@ -57,6 +58,7 @@ class SearchViewController: UIViewController {
     
     func configureButton() {
         view.addSubview(button)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         NSLayoutConstraint.activate([
             button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50), // left
@@ -66,8 +68,25 @@ class SearchViewController: UIViewController {
     }
     
     // MARK: - Functions -
-    func createDismissKeyBoardTapGesture() {
+    func dismissKeyBoardTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tapGesture)
+    }
+    
+    // MARK: - Actions -
+    @objc func buttonPressed() {
+        let followersViewController       = FollowersViewController()
+        followersViewController.userName  = userTextField.text
+        followersViewController.title     = userTextField.text
+        
+        navigationController?.pushViewController(followersViewController, animated: true)
+    }
+}
+
+// MARK: - Extensions -
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        buttonPressed()
+        return true
     }
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BF4EFF1823F187C10050177E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EFF1723F187C10050177E /* SearchViewController.swift */; };
 		BF4EFF1A23F188420050177E /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EFF1923F188420050177E /* FavoritesViewController.swift */; };
+		BF4EFF1C23F19E7E0050177E /* GHFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EFF1B23F19E7E0050177E /* GHFButton.swift */; };
+		BF4EFF1E23F1A62A0050177E /* GHFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EFF1D23F1A62A0050177E /* GHFTextField.swift */; };
 		BF59A0F923EB1A80009A3200 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59A0F823EB1A80009A3200 /* AppDelegate.swift */; };
 		BF59A0FB23EB1A80009A3200 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF59A0FA23EB1A80009A3200 /* SceneDelegate.swift */; };
 		BF59A10223EB1A82009A3200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF59A10123EB1A82009A3200 /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		BF4EFF1723F187C10050177E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		BF4EFF1923F188420050177E /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		BF4EFF1B23F19E7E0050177E /* GHFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFButton.swift; sourceTree = "<group>"; };
+		BF4EFF1D23F1A62A0050177E /* GHFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFTextField.swift; sourceTree = "<group>"; };
 		BF59A0F523EB1A80009A3200 /* GitHubFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF59A0F823EB1A80009A3200 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF59A0FA23EB1A80009A3200 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 				BF59A10623EB1A82009A3200 /* Info.plist */,
 				BF4EFF1723F187C10050177E /* SearchViewController.swift */,
 				BF4EFF1923F188420050177E /* FavoritesViewController.swift */,
+				BF4EFF1B23F19E7E0050177E /* GHFButton.swift */,
+				BF4EFF1D23F1A62A0050177E /* GHFTextField.swift */,
 			);
 			path = GitHubFollowers;
 			sourceTree = "<group>";
@@ -202,7 +208,9 @@
 				BF4EFF1823F187C10050177E /* SearchViewController.swift in Sources */,
 				BF59A0F923EB1A80009A3200 /* AppDelegate.swift in Sources */,
 				BF4EFF1A23F188420050177E /* FavoritesViewController.swift in Sources */,
+				BF4EFF1C23F19E7E0050177E /* GHFButton.swift in Sources */,
 				BF59A0FB23EB1A80009A3200 /* SceneDelegate.swift in Sources */,
+				BF4EFF1E23F1A62A0050177E /* GHFTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

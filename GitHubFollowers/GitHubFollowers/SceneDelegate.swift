@@ -12,12 +12,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // Set the Main Interface
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        // Create navigations controller for SearchViewController and FavoritesViewController
+        let searchNavigationController = UINavigationController(rootViewController: SearchViewController())
+        let favoritesNavigationController = UINavigationController(rootViewController: FavoritesViewController())
+        
+        // Create a Tabbar view controller and add the navigations controllers
+        let tabbar = UITabBarController()
+        tabbar.viewControllers = [searchNavigationController, favoritesNavigationController]
+        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = ViewController()
+        window?.rootViewController = tabbar
         window?.makeKeyAndVisible()
     }
 
@@ -48,7 +57,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-

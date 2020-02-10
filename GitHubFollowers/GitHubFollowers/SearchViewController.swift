@@ -22,6 +22,7 @@ class SearchViewController: UIViewController {
         view.backgroundColor = .systemBackground // light mode white / dark mode black
         configureLogoImageView()
         configureUserTextField()
+        configureButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,9 +48,19 @@ class SearchViewController: UIViewController {
         view.addSubview(userTextField)
         NSLayoutConstraint.activate([
             userTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
-            userTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            userTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            userTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50), // left
+            userTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50), // right
             userTextField.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    func configureButton() {
+        view.addSubview(button)
+        NSLayoutConstraint.activate([
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50), // left
+            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50), // right
+            button.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

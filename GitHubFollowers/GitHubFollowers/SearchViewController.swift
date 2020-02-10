@@ -10,7 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    // MARK: - UI -
+    // MARK: - UI Elements -
     let logoImageView: UIImageView   = UIImageView()
     let userTextField: GHFTextField  = GHFTextField()
     let button: GHFButton            = GHFButton(backgroundColor: .systemGreen, title: "Get followers")
@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
         configureLogoImageView()
         configureUserTextField()
         configureButton()
+        createDismissKeyBoardTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,5 +63,11 @@ class SearchViewController: UIViewController {
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50), // right
             button.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    // MARK: - Functions -
+    func createDismissKeyBoardTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
 }

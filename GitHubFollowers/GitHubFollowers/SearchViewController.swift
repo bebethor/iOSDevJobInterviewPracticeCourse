@@ -15,6 +15,11 @@ class SearchViewController: UIViewController {
     let userTextField: GHFTextField  = GHFTextField()
     let button: GHFButton            = GHFButton(backgroundColor: .systemRed, title: "Get followers")
     
+    // MARK: - Properties -
+    var isUserNameEntered: Bool {
+        return !userTextField.text!.isEmpty
+    }
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +33,7 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
     
     // MARK: - Configure UI -
@@ -75,6 +80,12 @@ class SearchViewController: UIViewController {
     
     // MARK: - Actions -
     @objc func buttonPressed() {
+        
+        guard isUserNameEntered else {
+            print("No user name entered")
+            return
+        }
+        
         let followersViewController       = FollowersViewController()
         followersViewController.userName  = userTextField.text
         followersViewController.title     = userTextField.text

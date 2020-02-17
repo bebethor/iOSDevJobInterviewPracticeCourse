@@ -12,7 +12,7 @@ class GHFAlertViewController: UIViewController {
     
     // MARK: - UI elements -
     let containerView = UIView() // contains titleLabel, messageLabel & actionButton
-    let titleLabel    = GHFTitleLabel(textAligment: .center, fontSize: 20)
+    let titleLabel    = GHFTitleLabel(textAligment: .left, fontSize: 20)
     let messageLabel  = GHFBodyLabel(textAligment: .center)
     let actionButton  = GHFButton(backgroundColor: .systemPink, title: "Ok")
     
@@ -49,9 +49,11 @@ class GHFAlertViewController: UIViewController {
     // MARK: - Configure UI -
     func configureContainerView() {
         view.addSubview(containerView)
-        containerView.backgroundColor = .systemBackground
+        containerView.backgroundColor    = .systemBackground
         containerView.layer.cornerRadius = 16
-        containerView.layer.borderColor = UIColor.white.cgColor
+        containerView.layer.borderColor  = UIColor.white.cgColor
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor), // Center vertically
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -63,6 +65,7 @@ class GHFAlertViewController: UIViewController {
     func configureTitleLabel() {
         containerView.addSubview(titleLabel)
         titleLabel.text = alertTitle ?? "Something went wrong"
+        
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),
             titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
@@ -75,6 +78,7 @@ class GHFAlertViewController: UIViewController {
         containerView.addSubview(actionButton)
         actionButton.setTitle(buttonTitle ?? "OK", for: .normal)
         actionButton.addTarget(self, action: #selector(dissmissViewController), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
             actionButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
@@ -87,11 +91,12 @@ class GHFAlertViewController: UIViewController {
         containerView.addSubview(messageLabel)
         messageLabel.text           = message ?? "Something went wrong"
         messageLabel.numberOfLines  = 4
+        
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
             messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
-            messageLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -12)
+            messageLabel.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -12)
         ])
     }
     

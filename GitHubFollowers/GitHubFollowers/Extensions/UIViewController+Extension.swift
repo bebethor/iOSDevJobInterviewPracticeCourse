@@ -6,4 +6,15 @@
 //  Copyright © 2020 JARCG. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIViewController {
+    func presentGHFAlertOnMainThreat(title: String, message: String, buttonTitle: String) {
+        DispatchQueue.main.async {
+            let alertViewController = GHFAlertViewController(title: title, message: message, buttonTitle: buttonTitle)
+            alertViewController.modalPresentationStyle = .overFullScreen
+            alertViewController.modalTransitionStyle = .crossDissolve // fade in
+            self.present(alertViewController, animated: true, completion: nil)
+        }
+    }
+}

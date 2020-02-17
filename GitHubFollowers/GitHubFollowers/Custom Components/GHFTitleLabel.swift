@@ -25,14 +25,13 @@ class GHFTitleLabel: UILabel {
         super.init(frame: .zero)
         self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        
         configure()
     }
     
     private func configure() {
         textColor                                  = .label
         adjustsFontSizeToFitWidth                  = true
-        minimumScaleFactor                         = 0.90
+        minimumScaleFactor                         = 0.9
         lineBreakMode                              = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints  = false
     }

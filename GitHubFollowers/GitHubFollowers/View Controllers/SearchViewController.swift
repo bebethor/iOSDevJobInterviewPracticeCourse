@@ -82,7 +82,7 @@ class SearchViewController: UIViewController {
     @objc func buttonPressed() {
         guard isUserNameEntered else {
             print("No user name entered")
-            presentGHFAlertOnMainThreat(title: "Empty username", message: "You need to enter a username to look for", buttonTitle: "Ok")
+            presentGHFAlertOnMainThreat(title: "Empty username", message: "You need to enter a username to look for 👾", buttonTitle: "Ok")
             return
         }
         

@@ -22,7 +22,7 @@ class GHFBodyLabel: UILabel {
     // Custom initializer
     init(textAligment: NSTextAlignment) {
         super.init(frame: .zero)
-        self.textAlignment = textAlignment
+        self.textAlignment = textAligment
         configure()
     }
     

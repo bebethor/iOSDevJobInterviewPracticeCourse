@@ -14,7 +14,7 @@ extension UIViewController {
             let alertViewController = GHFAlertViewController(title: title, message: message, buttonTitle: buttonTitle)
             alertViewController.modalPresentationStyle = .overFullScreen
             alertViewController.modalTransitionStyle = .crossDissolve // fade in
-            self.present(alertViewController, animated: true, completion: nil)
+            self.present(alertViewController, animated: true)
         }
     }
 }

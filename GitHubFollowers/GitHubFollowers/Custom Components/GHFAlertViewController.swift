@@ -21,6 +21,8 @@ class GHFAlertViewController: UIViewController {
     var message: String?
     var buttonTitle: String?
     
+    var padding: CGFloat = 20
+    
     // MARK: - Init -
     init(title: String, message: String, buttonTitle: String) {
         super.init(nibName: nil, bundle: nil)
@@ -40,6 +42,7 @@ class GHFAlertViewController: UIViewController {
         
         configureContainerView()
         configureTitleLabel()
+        configureActionButton()
     }
     
     // MARK: - Configure UI -
@@ -60,10 +63,35 @@ class GHFAlertViewController: UIViewController {
         containerView.addSubview(titleLabel)
         titleLabel.text = alertTitle ?? "Something went wrong"
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),
+            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
             titleLabel.heightAnchor.constraint(equalToConstant: 28)
         ])
+    }
+    
+    func configureActionButton() {
+        containerView.addSubview(actionButton)
+        actionButton.setTitle(buttonTitle ?? "OK", for: .normal)
+        actionButton.addTarget(self, action: #selector(dissmissViewController), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+            actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
+            actionButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
+            actionButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+            actionButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+    
+    func configureBodyLabel() {
+        containerView.addSubview(messageLabel)
+        messageLabel.text           = message ?? "Something went wrong"
+        messageLabel.numberOfLines  = 4
+        NSLayoutConstraint.activate([
+            
+        ])
+    }
+    
+    @objc func dissmissViewController() {
+        dismiss(animated: true, completion: nil)
     }
 }

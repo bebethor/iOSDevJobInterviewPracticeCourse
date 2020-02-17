@@ -80,7 +80,6 @@ class SearchViewController: UIViewController {
     
     // MARK: - Actions -
     @objc func buttonPressed() {
-        
         guard isUserNameEntered else {
             print("No user name entered")
             return

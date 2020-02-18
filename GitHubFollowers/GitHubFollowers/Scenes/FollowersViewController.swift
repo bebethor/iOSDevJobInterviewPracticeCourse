@@ -19,7 +19,7 @@ class FollowersViewController: UIViewController {
         
         NetworkManager.shared.getFollowers(for: userName, page: 1) { (followers, errorMessage) in
             guard let followers = followers else {
-                self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: errorMessage!, buttonTitle: "OK")
+                self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: errorMessage!.rawValue, buttonTitle: "OK")
                 return
             }
             

@@ -74,23 +74,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BF553C0223F2B22E00AD3667 /* View Controllers */ = {
+		BF553C0223F2B22E00AD3667 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				BF4EFF1723F187C10050177E /* SearchViewController.swift */,
 				BF6169E323F1BE65002FEFB8 /* FollowersViewController.swift */,
 				BF4EFF1923F188420050177E /* FavoritesViewController.swift */,
 			);
-			path = "View Controllers";
+			path = Scenes;
 			sourceTree = "<group>";
 		};
-		BF553C0323F2B25200AD3667 /* App Delegates */ = {
+		BF553C0323F2B25200AD3667 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				BF59A0F823EB1A80009A3200 /* AppDelegate.swift */,
 				BF59A0FA23EB1A80009A3200 /* SceneDelegate.swift */,
 			);
-			path = "App Delegates";
+			path = Support;
 			sourceTree = "<group>";
 		};
 		BF553C0423F2B27600AD3667 /* Extensions */ = {
@@ -151,8 +151,8 @@
 		BF59A0F723EB1A80009A3200 /* GitHubFollowers */ = {
 			isa = PBXGroup;
 			children = (
-				BF553C0323F2B25200AD3667 /* App Delegates */,
-				BF553C0223F2B22E00AD3667 /* View Controllers */,
+				BF553C0323F2B25200AD3667 /* Support */,
+				BF553C0223F2B22E00AD3667 /* Scenes */,
 				BF553C0523F2B28400AD3667 /* Custom Components */,
 				BF553C0423F2B27600AD3667 /* Extensions */,
 				BF553C0623F2B29C00AD3667 /* Resources */,

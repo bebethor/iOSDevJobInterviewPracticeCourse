@@ -21,9 +21,9 @@ class GHFTitleLabel: UILabel {
     }
     
     // Custom initializer
-    init(textAligment: NSTextAlignment, fontSize: CGFloat) {
+    init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
         super.init(frame: .zero)
-        self.textAlignment = textAligment
+        self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
         configure()
     }

@@ -12,7 +12,7 @@ class GHFAlertViewController: UIViewController {
     
     // MARK: - UI elements -
     let containerView = UIView() // contains titleLabel, messageLabel & actionButton
-    let titleLabel    = GHFTitleLabel(textAligment: .center, fontSize: 20)
+    let titleLabel    = GHFTitleLabel(textAlignment: .center, fontSize: 20)
     let messageLabel  = GHFBodyLabel(textAligment: .center)
     let actionButton  = GHFButton(backgroundColor: .systemPink, title: "Ok")
     

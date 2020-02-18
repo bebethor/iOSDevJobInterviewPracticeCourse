@@ -49,7 +49,6 @@ class NetworkManager {
                 completion(nil, "Invalid data received from server")
             }
         }
-        
         task.resume()
     }
 }

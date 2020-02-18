@@ -102,7 +102,6 @@
 			children = (
 				BF59A0F823EB1A80009A3200 /* AppDelegate.swift */,
 				BF59A0FA23EB1A80009A3200 /* SceneDelegate.swift */,
-				BF59A10623EB1A82009A3200 /* Info.plist */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -148,6 +147,7 @@
 			children = (
 				2C8C9DB323FAB88500675C30 /* Default-568h@2x.png */,
 				BF59A0F723EB1A80009A3200 /* GitHubFollowers */,
+				BF59A10623EB1A82009A3200 /* Info.plist */,
 				BF59A10E23EB1A82009A3200 /* GitHubFollowersTests */,
 				BF59A0F623EB1A80009A3200 /* Products */,
 			);
@@ -452,7 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TN8WTCP25G;
-				INFOPLIST_FILE = GitHubFollowers/Support/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -470,7 +470,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TN8WTCP25G;
-				INFOPLIST_FILE = GitHubFollowers/Support/Info.plist;
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

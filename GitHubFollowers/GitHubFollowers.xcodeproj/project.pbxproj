@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C46BDD723FBF02100AB37DD /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46BDD623FBF02100AB37DD /* Follower.swift */; };
+		2C46BDD923FBF43C00AB37DD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46BDD823FBF43C00AB37DD /* User.swift */; };
 		2C8C9DB423FAB88500675C30 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB323FAB88500675C30 /* Default-568h@2x.png */; };
 		2C8C9DB623FABE1A00675C30 /* GHFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB523FABE1A00675C30 /* GHFBodyLabel.swift */; };
 		2C8C9DB823FAC6A200675C30 /* GHFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		2C46BDD623FBF02100AB37DD /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		2C46BDD823FBF43C00AB37DD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2C8C9DB323FAB88500675C30 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2C8C9DB523FABE1A00675C30 /* GHFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFBodyLabel.swift; sourceTree = "<group>"; };
 		2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFAlertViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				2C46BDD623FBF02100AB37DD /* Follower.swift */,
+				2C46BDD823FBF43C00AB37DD /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C46BDD923FBF43C00AB37DD /* User.swift in Sources */,
 				2C8C9DBA23FAE6FD00675C30 /* UIViewController+Extension.swift in Sources */,
 				BF4EFF1823F187C10050177E /* SearchViewController.swift in Sources */,
 				BF553C0A23F2B30900AD3667 /* GHFTitleLabel.swift in Sources */,

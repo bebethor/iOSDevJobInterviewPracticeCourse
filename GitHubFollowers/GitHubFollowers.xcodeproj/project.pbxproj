@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C46BDD723FBF02100AB37DD /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46BDD623FBF02100AB37DD /* Follower.swift */; };
 		2C8C9DB423FAB88500675C30 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB323FAB88500675C30 /* Default-568h@2x.png */; };
 		2C8C9DB623FABE1A00675C30 /* GHFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB523FABE1A00675C30 /* GHFBodyLabel.swift */; };
 		2C8C9DB823FAC6A200675C30 /* GHFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C46BDD623FBF02100AB37DD /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		2C8C9DB323FAB88500675C30 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2C8C9DB523FABE1A00675C30 /* GHFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFBodyLabel.swift; sourceTree = "<group>"; };
 		2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFAlertViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C46BDD523FBF00600AB37DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C46BDD623FBF02100AB37DD /* Follower.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BF553C0223F2B22E00AD3667 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +162,7 @@
 		BF59A0F723EB1A80009A3200 /* GitHubFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				2C46BDD523FBF00600AB37DD /* Model */,
 				BF553C0323F2B25200AD3667 /* Support */,
 				BF553C0223F2B22E00AD3667 /* Scenes */,
 				BF553C0523F2B28400AD3667 /* Custom Components */,
@@ -279,6 +290,7 @@
 				2C8C9DB623FABE1A00675C30 /* GHFBodyLabel.swift in Sources */,
 				BF59A0F923EB1A80009A3200 /* AppDelegate.swift in Sources */,
 				BF6169E423F1BE65002FEFB8 /* FollowersViewController.swift in Sources */,
+				2C46BDD723FBF02100AB37DD /* Follower.swift in Sources */,
 				BF4EFF1A23F188420050177E /* FavoritesViewController.swift in Sources */,
 				BF4EFF1C23F19E7E0050177E /* GHFButton.swift in Sources */,
 				BF59A0FB23EB1A80009A3200 /* SceneDelegate.swift in Sources */,

@@ -9,14 +9,40 @@
 import UIKit
 
 class FollowersViewController: UIViewController {
+    
+    // MARK: - Outlets -
+    var collectionView: UICollectionView!
 
+    // MARK: - Properties -
     var userName: String!
     
+    // MARK: Lyfe cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureViewController()
+        configureCollectionView()
+        getFollowers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    func configureViewController() {
         view.backgroundColor                                    = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles  = true
-        
+    }
+    
+    func configureCollectionView() {
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
+        view.addSubview(collectionView)
+        collectionView.backgroundColor = .systemPink
+        collectionView.register(GHFCollectionViewCell.self, forCellWithReuseIdentifier: GHFCollectionViewCell.reuseID)
+    }
+    
+    func getFollowers() {
         NetworkManager.shared.getFollowers(for: userName, page: 1) { (result) in
             switch result {
             case .success(let followers):
@@ -25,10 +51,5 @@ class FollowersViewController: UIViewController {
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }

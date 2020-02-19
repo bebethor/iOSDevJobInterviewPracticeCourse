@@ -10,19 +10,25 @@ import UIKit
 
 class FollowersViewController: UIViewController {
     
+    enum Section {
+        case main
+    }
+    
     // MARK: - Outlets -
     var collectionView: UICollectionView!
 
     // MARK: - Properties -
     var userName: String!
+    var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
+    var followers: [Follower] = []
     
     // MARK: Lyfe cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureViewController()
         configureCollectionView()
         getFollowers()
+        configureDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +44,7 @@ class FollowersViewController: UIViewController {
     func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: threeColumnsFlowLauyout())
         view.addSubview(collectionView)
-        collectionView.backgroundColor = .systemPink
+        collectionView.backgroundColor = .systemBackground
         collectionView.register(GHFCollectionViewCell.self, forCellWithReuseIdentifier: GHFCollectionViewCell.reuseID)
     }
     
@@ -60,10 +66,31 @@ class FollowersViewController: UIViewController {
         NetworkManager.shared.getFollowers(for: userName, page: 1) { (result) in
             switch result {
             case .success(let followers):
-                print(followers)
+                self.followers = followers
+                self.updateData()
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
         }
+    }
+    
+    func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView,
+            indexPath, follower) -> UICollectionViewCell? in
+            // Create the cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GHFCollectionViewCell.reuseID, for: indexPath) as! GHFCollectionViewCell
+            // Configure the cell
+            cell.set(follower: follower)
+            // Return cell
+            return cell
+        })
+    }
+    
+    func updateData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(followers)
+        
+        DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true, completion: nil) }
     }
 }

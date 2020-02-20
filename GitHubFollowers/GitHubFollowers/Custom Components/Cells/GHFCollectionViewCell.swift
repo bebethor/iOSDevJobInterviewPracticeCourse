@@ -28,6 +28,7 @@ class GHFCollectionViewCell: UICollectionViewCell {
     
     func set(follower: Follower) {
         userNameLabel.text = follower.login
+        avatarImageView.downLoadImage(from: follower.avatarUrl)
     }
     
     private func configure() {

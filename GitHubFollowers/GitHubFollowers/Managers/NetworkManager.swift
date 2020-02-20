@@ -6,12 +6,13 @@
 //  Copyright © 2020 JARCG. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     // Singleton
-    static let shared   = NetworkManager() //  this information will be shared among all the instances
-    let baseURL         = "https://api.github.com/users/"
+    static let shared           = NetworkManager() //  this information will be shared among all the instances
+    private let baseURL         = "https://api.github.com/users/"
+    let cache                   = NSCache<NSString, UIImage>()
     
     private init() {}
     

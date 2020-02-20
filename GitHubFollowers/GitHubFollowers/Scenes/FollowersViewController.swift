@@ -10,9 +10,7 @@ import UIKit
 
 class FollowersViewController: UIViewController {
     
-    enum Section {
-        case main
-    }
+    enum Section { case main }
     
     // MARK: - Outlets -
     var collectionView: UICollectionView!
@@ -63,7 +61,10 @@ class FollowersViewController: UIViewController {
     }
     
     func getFollowers() {
-        NetworkManager.shared.getFollowers(for: userName, page: 1) { (result) in
+        NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
+            
+            guard let self = self else { return }
+            
             switch result {
             case .success(let followers):
                 self.followers = followers

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C42C09223FE990F00FD6B93 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42C09123FE990F00FD6B93 /* UIHelper.swift */; };
 		2C43E8DC23FD37630051C698 /* GHFCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C43E8DB23FD37630051C698 /* GHFCollectionViewCell.swift */; };
 		2C43E8DE23FD3A670051C698 /* GHFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C43E8DD23FD3A670051C698 /* GHFImageView.swift */; };
 		2C46BDD723FBF02100AB37DD /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46BDD623FBF02100AB37DD /* Follower.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C42C09123FE990F00FD6B93 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		2C43E8DB23FD37630051C698 /* GHFCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C43E8DD23FD3A670051C698 /* GHFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFImageView.swift; sourceTree = "<group>"; };
 		2C46BDD623FBF02100AB37DD /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				2C46BDDE23FC3C9700AB37DD /* ErrorMessage.swift */,
+				2C42C09123FE990F00FD6B93 /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				2C43E8DC23FD37630051C698 /* GHFCollectionViewCell.swift in Sources */,
 				BF4EFF1823F187C10050177E /* SearchViewController.swift in Sources */,
 				BF553C0A23F2B30900AD3667 /* GHFTitleLabel.swift in Sources */,
+				2C42C09223FE990F00FD6B93 /* UIHelper.swift in Sources */,
 				2C8C9DB823FAC6A200675C30 /* GHFAlertViewController.swift in Sources */,
 				2C8C9DB623FABE1A00675C30 /* GHFBodyLabel.swift in Sources */,
 				BF59A0F923EB1A80009A3200 /* AppDelegate.swift in Sources */,

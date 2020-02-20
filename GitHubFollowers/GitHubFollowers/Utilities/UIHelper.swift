@@ -6,10 +6,10 @@
 //  Copyright © 2020 JARCG. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct UIHelper {
-    static func threeColumnsFlowLauyout() -> UICollectionViewFlowLayout {
+    static func threeColumnsFlowLauyout(in view: UIView) -> UICollectionViewFlowLayout {
         let width                       = view.bounds.width
         let padding: CGFloat            = 12
         let minimumItemSpacing: CGFloat = 10

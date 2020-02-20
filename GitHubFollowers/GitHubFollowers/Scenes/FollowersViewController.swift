@@ -9,7 +9,6 @@
 import UIKit
 
 class FollowersViewController: UIViewController {
-    
     enum Section { case main }
     
     // MARK: - Outlets -
@@ -41,6 +40,7 @@ class FollowersViewController: UIViewController {
     
     func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.threeColumnsFlowLauyout(in: view))
+        collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
         collectionView.register(GHFCollectionViewCell.self, forCellWithReuseIdentifier: GHFCollectionViewCell.reuseID)
@@ -79,5 +79,17 @@ class FollowersViewController: UIViewController {
         snapshot.appendItems(followers)
         
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true, completion: nil) }
+    }
+}
+
+extension FollowersViewController: UICollectionViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            getFollowers()
+        }
     }
 }

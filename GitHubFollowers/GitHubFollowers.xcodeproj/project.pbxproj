@@ -131,6 +131,38 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		2C48A384240012460019FA0A /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				BF4EFF1D23F1A62A0050177E /* GHFTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		2C48A385240012530019FA0A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2C48A386240012660019FA0A /* Image Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C43E8DD23FD3A670051C698 /* GHFImageView.swift */,
+			);
+			path = "Image Views";
+			sourceTree = "<group>";
+		};
+		2C48A387240012880019FA0A /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				BF4EFF1B23F19E7E0050177E /* GHFButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		BF553C0223F2B22E00AD3667 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,12 +193,12 @@
 		BF553C0523F2B28400AD3667 /* Custom Components */ = {
 			isa = PBXGroup;
 			children = (
+				2C48A387240012880019FA0A /* Buttons */,
+				2C48A386240012660019FA0A /* Image Views */,
+				2C48A385240012530019FA0A /* View Controllers */,
+				2C48A384240012460019FA0A /* TextFields */,
 				2C43E8DA23FD370C0051C698 /* Cells */,
 				2C43E8DF23FD3A750051C698 /* Labels */,
-				BF4EFF1B23F19E7E0050177E /* GHFButton.swift */,
-				BF4EFF1D23F1A62A0050177E /* GHFTextField.swift */,
-				2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */,
-				2C43E8DD23FD3A670051C698 /* GHFImageView.swift */,
 			);
 			path = "Custom Components";
 			sourceTree = "<group>";

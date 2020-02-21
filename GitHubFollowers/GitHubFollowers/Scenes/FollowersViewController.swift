@@ -49,12 +49,13 @@ class FollowersViewController: UIViewController {
     }
     
     func getFollowers(username: String, page: Int) {
-        NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
+        NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] (result) in
             guard let self = self else { return }
             
             switch result {
             case .success(let followers):
-                self.followers = followers
+                if followers.count < 100 { self.hasMoreFollowers = false }
+                self.followers.append(contentsOf: followers)
                 self.updateData()
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")

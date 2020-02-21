@@ -99,6 +99,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         buttonPressed()
+        self.view.endEditing(true)
         return true
     }
 }

@@ -34,6 +34,7 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        userTextField.text?.removeAll()
     }
     
     // MARK: - Configure UI -
@@ -98,6 +99,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         buttonPressed()
+        self.view.endEditing(true)
         return true
     }
 }

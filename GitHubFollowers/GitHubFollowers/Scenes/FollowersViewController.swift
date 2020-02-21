@@ -9,7 +9,6 @@
 import UIKit
 
 class FollowersViewController: UIViewController {
-    
     enum Section { case main }
     
     // MARK: - Outlets -
@@ -19,13 +18,15 @@ class FollowersViewController: UIViewController {
     var userName: String!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     var followers: [Follower] = []
+    var page: Int = 1
+    var hasMoreFollowers: Bool = true
     
     // MARK: Lyfe cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         configureCollectionView()
-        getFollowers()
+        getFollowers(username: userName, page: page)
         configureDataSource()
     }
     
@@ -41,19 +42,20 @@ class FollowersViewController: UIViewController {
     
     func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.threeColumnsFlowLauyout(in: view))
+        collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
         collectionView.register(GHFCollectionViewCell.self, forCellWithReuseIdentifier: GHFCollectionViewCell.reuseID)
     }
     
-    func getFollowers() {
-        NetworkManager.shared.getFollowers(for: userName, page: 1) { [weak self] (result) in
-            
+    func getFollowers(username: String, page: Int) {
+        NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] (result) in
             guard let self = self else { return }
             
             switch result {
             case .success(let followers):
-                self.followers = followers
+                if followers.count < 100 { self.hasMoreFollowers = false }
+                self.followers.append(contentsOf: followers)
                 self.updateData()
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
@@ -79,5 +81,20 @@ class FollowersViewController: UIViewController {
         snapshot.appendItems(followers)
         
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true, completion: nil) }
+    }
+}
+
+extension FollowersViewController: UICollectionViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        
+        // Detect the bottom of the scrollView
+        if offsetY > contentHeight - height {
+            guard hasMoreFollowers else { return }
+            page += 1
+            getFollowers(username: userName, page: page)
+        }
     }
 }

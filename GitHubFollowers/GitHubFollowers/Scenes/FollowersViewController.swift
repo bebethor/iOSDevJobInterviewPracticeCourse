@@ -21,11 +21,12 @@ class FollowersViewController: UIViewController {
     var page: Int = 1
     var hasMoreFollowers: Bool = true
     
-    // MARK: Lyfe cycle
+    // MARK: - Lyfe cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         configureCollectionView()
+        configureSearchController()
         getFollowers(username: userName, page: page)
         configureDataSource()
     }
@@ -35,6 +36,7 @@ class FollowersViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    // MARK: - Configure UI -
     func configureViewController() {
         view.backgroundColor                                    = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles  = true
@@ -48,6 +50,15 @@ class FollowersViewController: UIViewController {
         collectionView.register(GHFCollectionViewCell.self, forCellWithReuseIdentifier: GHFCollectionViewCell.reuseID)
     }
     
+    func configureSearchController() {
+        let searchController                                  = UISearchController()
+        searchController.searchResultsUpdater                 = self
+        searchController.searchBar.placeholder                = "Search Username"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController                       = searchController
+    }
+    
+    // MARK: - Functions -
     func getFollowers(username: String, page: Int) {
         showLoading()
         NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] (result) in
@@ -71,6 +82,7 @@ class FollowersViewController: UIViewController {
         }
     }
     
+    // MARK: - Diffable datasource -
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView,
             indexPath, follower) -> UICollectionViewCell? in
@@ -92,6 +104,7 @@ class FollowersViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions -
 extension FollowersViewController: UICollectionViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
@@ -104,5 +117,11 @@ extension FollowersViewController: UICollectionViewDelegate {
             page += 1
             getFollowers(username: userName, page: page)
         }
+    }
+}
+
+extension FollowersViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
 }

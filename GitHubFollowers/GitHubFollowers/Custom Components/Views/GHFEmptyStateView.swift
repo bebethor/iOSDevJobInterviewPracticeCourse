@@ -23,11 +23,13 @@ class GHFEmptyStateView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Configure -
     private func configure() {
         configureMessageLabel()
         configureLogoImageView()
     }
     
+    // MARK: - UIElements -
     private func configureMessageLabel() {
         addSubview(messageLabel)
         messageLabel.numberOfLines   = 3

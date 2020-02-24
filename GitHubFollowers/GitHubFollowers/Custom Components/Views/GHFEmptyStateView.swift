@@ -45,5 +45,10 @@ class GHFEmptyStateView: UIView {
         addSubview(logoImageView)
         logoImageView.image                                     = UIImage(named: "empty-state-logo")
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
+            logoImageView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3)
+        ])
     }
 }

@@ -18,6 +18,7 @@ class FollowersViewController: UIViewController {
     var userName: String!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     var followers: [Follower] = []
+    var filteredFollowers: [Follower] = []
     var page: Int = 1
     var hasMoreFollowers: Bool = true
     
@@ -75,7 +76,7 @@ class FollowersViewController: UIViewController {
                     return
                 }
                 
-                self.updateData()
+                self.updateData(on: self.followers)
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
@@ -95,7 +96,7 @@ class FollowersViewController: UIViewController {
         })
     }
     
-    func updateData() {
+    func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
@@ -123,6 +124,7 @@ extension FollowersViewController: UICollectionViewDelegate {
 extension FollowersViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
-        
+        filteredFollowers = followers.filter({ return $0.login.lowercased().contains(filter.lowercased())})
+        updateData(on: filteredFollowers)
     }
 }

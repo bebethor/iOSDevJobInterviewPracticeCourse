@@ -57,6 +57,13 @@ class FollowersViewController: UIViewController {
             case .success(let followers):
                 if followers.count < 100 { self.hasMoreFollowers = false }
                 self.followers.append(contentsOf: followers)
+                
+                let message = "This user doesn´t have followers. Go follow this user!!"
+                if self.followers.isEmpty {
+                    DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+                    return
+                }
+                
                 self.updateData()
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")

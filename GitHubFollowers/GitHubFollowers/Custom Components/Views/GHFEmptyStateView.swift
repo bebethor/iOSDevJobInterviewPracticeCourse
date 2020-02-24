@@ -23,6 +23,11 @@ class GHFEmptyStateView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    init(message: String) {
+        super.init(frame: .zero)
+        messageLabel.text = message
+    }
+    
     // MARK: - Configure -
     private func configure() {
         configureMessageLabel()

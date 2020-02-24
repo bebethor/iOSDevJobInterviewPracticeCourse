@@ -18,14 +18,16 @@ class FollowersViewController: UIViewController {
     var userName: String!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     var followers: [Follower] = []
+    var filteredFollowers: [Follower] = []
     var page: Int = 1
     var hasMoreFollowers: Bool = true
     
-    // MARK: Lyfe cycle
+    // MARK: - Lyfe cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         configureCollectionView()
+        configureSearchController()
         getFollowers(username: userName, page: page)
         configureDataSource()
     }
@@ -35,6 +37,7 @@ class FollowersViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    // MARK: - Configure UI -
     func configureViewController() {
         view.backgroundColor                                    = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles  = true
@@ -48,6 +51,16 @@ class FollowersViewController: UIViewController {
         collectionView.register(GHFCollectionViewCell.self, forCellWithReuseIdentifier: GHFCollectionViewCell.reuseID)
     }
     
+    func configureSearchController() {
+        let searchController                                   = UISearchController()
+        searchController.searchResultsUpdater                  = self
+        searchController.searchBar.delegate                    = self
+        searchController.searchBar.placeholder                 = "Search Username"
+        searchController.obscuresBackgroundDuringPresentation  = false
+        navigationItem.searchController                        = searchController
+    }
+    
+    // MARK: - Functions -
     func getFollowers(username: String, page: Int) {
         showLoading()
         NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] (result) in
@@ -64,13 +77,14 @@ class FollowersViewController: UIViewController {
                     return
                 }
                 
-                self.updateData()
+                self.updateData(on: self.followers)
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
         }
     }
     
+    // MARK: - Diffable datasource -
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView,
             indexPath, follower) -> UICollectionViewCell? in
@@ -83,7 +97,7 @@ class FollowersViewController: UIViewController {
         })
     }
     
-    func updateData() {
+    func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
@@ -92,6 +106,7 @@ class FollowersViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions -
 extension FollowersViewController: UICollectionViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
@@ -104,5 +119,17 @@ extension FollowersViewController: UICollectionViewDelegate {
             page += 1
             getFollowers(username: userName, page: page)
         }
+    }
+}
+
+extension FollowersViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        filteredFollowers = followers.filter({ return $0.login.lowercased().contains(filter.lowercased())})
+        updateData(on: filteredFollowers)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        updateData(on: self.followers)
     }
 }

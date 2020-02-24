@@ -9,5 +9,6 @@
 import UIKit
 
 class GHFEmptyStateView: UIView {
-    
+    let messageLabel = GHFTitleLabel(textAlignment: .center, fontSize: 20)
+    let imageView = GHFImageView(frame: .zero)
 }

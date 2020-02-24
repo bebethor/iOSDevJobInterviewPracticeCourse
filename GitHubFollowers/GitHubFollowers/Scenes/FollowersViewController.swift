@@ -51,11 +51,11 @@ class FollowersViewController: UIViewController {
     }
     
     func configureSearchController() {
-        let searchController                                  = UISearchController()
-        searchController.searchResultsUpdater                 = self
-        searchController.searchBar.placeholder                = "Search Username"
-        searchController.obscuresBackgroundDuringPresentation = false
-        navigationItem.searchController                       = searchController
+        let searchController                                   = UISearchController()
+        searchController.searchResultsUpdater                  = self
+        searchController.searchBar.placeholder                 = "Search Username"
+        searchController.obscuresBackgroundDuringPresentation  = false
+        navigationItem.searchController                        = searchController
     }
     
     // MARK: - Functions -
@@ -122,6 +122,7 @@ extension FollowersViewController: UICollectionViewDelegate {
 
 extension FollowersViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
         
     }
 }

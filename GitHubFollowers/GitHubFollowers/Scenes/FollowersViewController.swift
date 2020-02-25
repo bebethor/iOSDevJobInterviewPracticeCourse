@@ -130,7 +130,7 @@ extension FollowersViewController: UICollectionViewDelegate {
         destinationVC.title      = follower.login
         let navigationController = UINavigationController(rootViewController: destinationVC)
         
-        present(destinationVC, animated: true, completion: nil)
+        present(navigationController, animated: true, completion: nil)
         
     }
 }

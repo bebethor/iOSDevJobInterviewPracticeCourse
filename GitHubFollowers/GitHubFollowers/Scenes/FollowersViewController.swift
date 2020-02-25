@@ -21,6 +21,7 @@ class FollowersViewController: UIViewController {
     var filteredFollowers: [Follower] = []
     var page: Int = 1
     var hasMoreFollowers: Bool = true
+    var isSearching: Bool = false
     
     // MARK: - Lyfe cycle -
     override func viewDidLoad() {
@@ -120,16 +121,30 @@ extension FollowersViewController: UICollectionViewDelegate {
             getFollowers(username: userName, page: page)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let activeArray          = isSearching ? filteredFollowers : followers
+        let follower             = activeArray[indexPath.item]
+        
+        let destinationVC        = UserInfViewController()
+        destinationVC.title      = follower.login
+        let navigationController = UINavigationController(rootViewController: destinationVC)
+        
+        present(destinationVC, animated: true, completion: nil)
+        
+    }
 }
 
 extension FollowersViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        isSearching       = true
         filteredFollowers = followers.filter({ return $0.login.lowercased().contains(filter.lowercased())})
         updateData(on: filteredFollowers)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
         updateData(on: self.followers)
     }
 }

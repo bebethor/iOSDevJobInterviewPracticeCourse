@@ -1,5 +1,5 @@
 //
-//  ErrorMessage.swift
+//  GHFError.swift
 //  GitHubFollowers
 //
 //  Created by Jose Alberto on 18/02/2020.

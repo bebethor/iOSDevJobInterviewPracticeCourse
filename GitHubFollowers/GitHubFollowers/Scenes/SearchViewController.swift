@@ -23,7 +23,6 @@ class SearchViewController: UIViewController {
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .systemBackground // light mode white / dark mode black
         configureLogoImageView()
         configureUserTextField()
@@ -33,7 +32,8 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        userTextField.text?.removeAll()
     }
     
     // MARK: - Configure UI -
@@ -80,9 +80,9 @@ class SearchViewController: UIViewController {
     
     // MARK: - Actions -
     @objc func buttonPressed() {
-        
         guard isUserNameEntered else {
             print("No user name entered")
+            presentGHFAlertOnMainThreat(title: "Empty username", message: "You need to enter a username to look for 👾", buttonTitle: "Ok")
             return
         }
         
@@ -98,6 +98,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         buttonPressed()
+        self.view.endEditing(true)
         return true
     }
 }

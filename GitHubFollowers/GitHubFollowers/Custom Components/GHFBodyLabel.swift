@@ -1,15 +1,14 @@
 //
-//  GHFTitleLabel.swift
+//  GHFBodyLabel.swift
 //  GitHubFollowers
 //
-//  Created by Jose Alberto Ruíz-Carrillo González on 11/02/2020.
+//  Created by Jose Alberto on 17/02/2020.
 //  Copyright © 2020 JARCG. All rights reserved.
 //
 
 import UIKit
 
-class GHFTitleLabel: UILabel {
-    
+class GHFBodyLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         // Custom code
@@ -21,18 +20,18 @@ class GHFTitleLabel: UILabel {
     }
     
     // Custom initializer
-    init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+    init(textAligment: NSTextAlignment) {
         super.init(frame: .zero)
-        self.textAlignment = textAlignment
-        self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
+        self.textAlignment = textAligment
         configure()
     }
     
     private func configure() {
-        textColor                                  = .label
+        textColor                                  = .secondaryLabel
+        font                                       = UIFont.preferredFont(forTextStyle: .body) // Dynamic font
         adjustsFontSizeToFitWidth                  = true
-        minimumScaleFactor                         = 0.9
-        lineBreakMode                              = .byTruncatingTail
+        minimumScaleFactor                         = 0.75
+        lineBreakMode                              = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints  = false
     }
 }

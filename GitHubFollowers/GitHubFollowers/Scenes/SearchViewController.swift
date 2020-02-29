@@ -33,7 +33,7 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     // MARK: - Configure UI -
@@ -80,9 +80,9 @@ class SearchViewController: UIViewController {
     
     // MARK: - Actions -
     @objc func buttonPressed() {
-        
         guard isUserNameEntered else {
             print("No user name entered")
+            presentGHFAlertOnMainThreat(title: "Empty username", message: "You need to enter a username to look for 👾", buttonTitle: "Ok")
             return
         }
         

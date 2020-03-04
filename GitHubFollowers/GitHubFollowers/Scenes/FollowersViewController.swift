@@ -139,7 +139,6 @@ extension FollowersViewController: UISearchResultsUpdating, UISearchBarDelegate 
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
         isSearching       = true
-        
         // $0.represents a follower.
         filteredFollowers = followers.filter( { return $0.login.lowercased().contains(filter.lowercased()) } )
         updateData(on: filteredFollowers)

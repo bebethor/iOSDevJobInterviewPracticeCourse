@@ -15,8 +15,8 @@
 		2C46BDDC23FBFFD800AB37DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46BDDB23FBFFD800AB37DD /* NetworkManager.swift */; };
 		2C46BDDF23FC3C9700AB37DD /* GHFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46BDDE23FC3C9700AB37DD /* GHFError.swift */; };
 		2C48A38A240015E10019FA0A /* GHFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C48A389240015E10019FA0A /* GHFEmptyStateView.swift */; };
+		2C5A30EF2410115900F23ECD /* GHFUserInfoHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5A30EE2410115900F23ECD /* GHFUserInfoHeaderViewController.swift */; };
 		2C72B8D22404393000D6A23C /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72B8D12404393000D6A23C /* UserInfoViewController.swift */; };
-		2C8C9DB423FAB88500675C30 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB323FAB88500675C30 /* Default-568h@2x.png */; };
 		2C8C9DB623FABE1A00675C30 /* GHFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB523FABE1A00675C30 /* GHFBodyLabel.swift */; };
 		2C8C9DB823FAC6A200675C30 /* GHFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */; };
 		2C8C9DBA23FAE6FD00675C30 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB923FAE6FD00675C30 /* UIViewController+Extension.swift */; };
@@ -52,8 +52,8 @@
 		2C46BDDB23FBFFD800AB37DD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2C46BDDE23FC3C9700AB37DD /* GHFError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFError.swift; sourceTree = "<group>"; };
 		2C48A389240015E10019FA0A /* GHFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFEmptyStateView.swift; sourceTree = "<group>"; };
+		2C5A30EE2410115900F23ECD /* GHFUserInfoHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFUserInfoHeaderViewController.swift; sourceTree = "<group>"; };
 		2C72B8D12404393000D6A23C /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
-		2C8C9DB323FAB88500675C30 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2C8C9DB523FABE1A00675C30 /* GHFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFBodyLabel.swift; sourceTree = "<group>"; };
 		2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFAlertViewController.swift; sourceTree = "<group>"; };
 		2C8C9DB923FAE6FD00675C30 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -147,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */,
+				2C5A30EE2410115900F23ECD /* GHFUserInfoHeaderViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -236,7 +237,6 @@
 		BF59A0EC23EB1A80009A3200 = {
 			isa = PBXGroup;
 			children = (
-				2C8C9DB323FAB88500675C30 /* Default-568h@2x.png */,
 				BF59A0F723EB1A80009A3200 /* GitHubFollowers */,
 				BF59A10623EB1A82009A3200 /* Info.plist */,
 				BF59A10E23EB1A82009A3200 /* GitHubFollowersTests */,
@@ -361,7 +361,6 @@
 			files = (
 				BF59A10523EB1A82009A3200 /* LaunchScreen.storyboard in Resources */,
 				BF59A10223EB1A82009A3200 /* Assets.xcassets in Resources */,
-				2C8C9DB423FAB88500675C30 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +383,7 @@
 				2C8C9DBA23FAE6FD00675C30 /* UIViewController+Extension.swift in Sources */,
 				2C43E8DC23FD37630051C698 /* GHFCollectionViewCell.swift in Sources */,
 				BF4EFF1823F187C10050177E /* SearchViewController.swift in Sources */,
+				2C5A30EF2410115900F23ECD /* GHFUserInfoHeaderViewController.swift in Sources */,
 				BF553C0A23F2B30900AD3667 /* GHFTitleLabel.swift in Sources */,
 				2C42C09223FE990F00FD6B93 /* UIHelper.swift in Sources */,
 				2C8C9DB823FAC6A200675C30 /* GHFAlertViewController.swift in Sources */,

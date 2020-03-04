@@ -51,6 +51,7 @@ class NetworkManager {
         task.resume()
     }
     
+    // @escaping means that the completion can live out of getUserInfo. This is made for asynchronous operations
     func getUserInfo(for username: String, completion: @escaping (Result<User, GHFError>) -> Void) {
         let endpoint = baseURL + "\(username)"
         guard let url = URL(string: endpoint) else {

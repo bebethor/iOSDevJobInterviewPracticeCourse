@@ -20,9 +20,16 @@ class UserInfoViewController: UIViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dissmisVC))
         navigationItem.rightBarButtonItem = doneButton
         
-        NetworkManager.shared.getUserInfo(for: username) { [ weak self] (result) in
+        getUserInfo()
+    }
+    
+    @objc func dissmisVC() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func getUserInfo() {
+        NetworkManager.shared.getUserInfo(for: username) { [ weak self ] (result) in
             guard let self = self else { return }
-            
             switch result {
             case .success(let user):
                 print(user)
@@ -30,9 +37,5 @@ class UserInfoViewController: UIViewController {
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
-    }
-    
-    @objc func dissmisVC() {
-        dismiss(animated: true, completion: nil)
     }
 }

@@ -37,9 +37,10 @@ class UserInfoViewController: UIViewController {
     
     func autolayoutUI() {
         itemViewsArray = [headerContainerView, itemViewOneContainer, itemViewTwoContainer]
-        view.addSubview(headerContainerView)
-        view.addSubview(itemViewOneContainer)
-        view.addSubview(itemViewTwoContainer)
+        
+        for item in itemViewsArray {
+            view.addSubview(item)
+        }
         
         itemViewOneContainer.backgroundColor = .systemPink
         itemViewTwoContainer.backgroundColor = .systemBlue

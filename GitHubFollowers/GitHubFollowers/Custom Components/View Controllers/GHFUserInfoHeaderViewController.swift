@@ -18,7 +18,7 @@ class GHFUserInfoHeaderViewController: UIViewController {
     let locationLabel       = GHFSecondaryTitleLabel(fontSize: 18)
     let bioLabel            = GHFBodyLabel(textAligment: .left)
     
-    var uiElementsArray          = [UIView]()
+    var uiElementsArray     = [UIView]()
     
     var user: User!
     

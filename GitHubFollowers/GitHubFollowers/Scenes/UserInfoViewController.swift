@@ -11,7 +11,6 @@ import UIKit
 class UserInfoViewController: UIViewController {
     
     let headerContainerView = UIView()
-    
     var username: String!
 
     override func viewDidLoad() {
@@ -29,6 +28,7 @@ class UserInfoViewController: UIViewController {
     func autolayoutUI() {
         view.addSubview(headerContainerView)
         headerContainerView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             headerContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

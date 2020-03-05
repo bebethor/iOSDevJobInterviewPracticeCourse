@@ -33,7 +33,7 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
-        userTextField.text?.removeAll()
+        //userTextField.text?.removeAll()
     }
     
     // MARK: - Configure UI -
@@ -53,6 +53,7 @@ class SearchViewController: UIViewController {
     func configureUserTextField() {
         view.addSubview(userTextField)
         userTextField.delegate = self
+        userTextField.text = "SAllen0400"
         NSLayoutConstraint.activate([
             userTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
             userTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50), // left

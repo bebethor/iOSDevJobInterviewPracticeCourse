@@ -36,17 +36,18 @@ class GHFUserInfoHeaderViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         autoLayoutUI()
+        configureUIElements()
     }
     
     func configureUIElements() {
         avatarImageView.downLoadImage(from: user.avatarUrl)
-        userNameLabel.text      = user.login
-        nameLabel.text          = user.name ?? ""
-        locationImageView.image = UIImage(systemName: SFSymbols.location)
-        locationLabel.text      = user.location ?? "No location"
-        bioLabel.text           = user.bio ?? "No bio"
-        bioLabel.numberOfLines  = 3
-        
+        userNameLabel.text          = user.login
+        nameLabel.text              = user.name ?? ""
+        locationLabel.text          = user.location ?? "No location"
+        bioLabel.text               = user.bio ?? "No bio"
+        bioLabel.numberOfLines      = 3
+        locationImageView.image     = UIImage(systemName: SFSymbols.location)
+        locationImageView.tintColor = .secondaryLabel
     }
     
     func addSubviews() {

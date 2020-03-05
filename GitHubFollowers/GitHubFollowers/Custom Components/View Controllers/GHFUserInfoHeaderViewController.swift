@@ -52,7 +52,7 @@ class GHFUserInfoHeaderViewController: UIViewController {
     }
     
     func addSubviews() {
-        self.uiElementsArray.append(contentsOf: [avatarImageView, usernameLabel, nameLabel, locationImageView, locationLabel, bioLabel])
+        self.uiElementsArray = [avatarImageView, usernameLabel, nameLabel, locationImageView, locationLabel, bioLabel]
         for uiElement in uiElementsArray {
             view.addSubview(uiElement)
         }

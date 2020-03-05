@@ -16,6 +16,7 @@ class UserInfoViewController: UIViewController {
     let itemViewTwoContainer         = UIView()
     
     // MARK: - PROPERTIES -
+    var itemViewsArray = [UIView]()
     var username: String!
 
     // MARK: - LYFE CYCLE -
@@ -35,6 +36,7 @@ class UserInfoViewController: UIViewController {
     }
     
     func autolayoutUI() {
+        itemViewsArray = [headerContainerView, itemViewOneContainer, itemViewTwoContainer]
         view.addSubview(headerContainerView)
         view.addSubview(itemViewOneContainer)
         view.addSubview(itemViewTwoContainer)

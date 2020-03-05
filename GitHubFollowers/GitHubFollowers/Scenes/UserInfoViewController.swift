@@ -10,7 +10,9 @@ import UIKit
 
 class UserInfoViewController: UIViewController {
     
-    let headerContainerView = UIView()
+    let headerContainerView          = UIView()
+    let itemViewOneContainer         = UIView()
+    let itemViewTwoContainer         = UIView()
     var username: String!
 
     override func viewDidLoad() {
@@ -27,13 +29,27 @@ class UserInfoViewController: UIViewController {
     
     func autolayoutUI() {
         view.addSubview(headerContainerView)
+        view.addSubview(itemViewOneContainer)
+        view.addSubview(itemViewTwoContainer)
         headerContainerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let padding: CGFloat = 20
         
         NSLayoutConstraint.activate([
             headerContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerContainerView.heightAnchor.constraint(equalToConstant: 180)
+            headerContainerView.heightAnchor.constraint(equalToConstant: 180),
+            
+            itemViewOneContainer.topAnchor.constraint(equalTo: headerContainerView.bottomAnchor, constant: padding),
+            itemViewOneContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            itemViewOneContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemViewOneContainer.heightAnchor.constraint(equalToConstant: 140),
+            
+            itemViewTwoContainer.topAnchor.constraint(equalTo: itemViewOneContainer.bottomAnchor, constant: padding),
+            itemViewTwoContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            itemViewTwoContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemViewTwoContainer.heightAnchor.constraint(equalToConstant: 140)
         ])
     }
     

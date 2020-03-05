@@ -15,7 +15,6 @@ class GHFImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         // Custom code here
         configure()
     }

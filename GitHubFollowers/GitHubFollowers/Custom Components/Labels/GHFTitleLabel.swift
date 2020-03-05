@@ -32,7 +32,7 @@ class GHFTitleLabel: UILabel {
         textColor                                  = .label
         adjustsFontSizeToFitWidth                  = true
         minimumScaleFactor                         = 0.9
-        lineBreakMode                              = .byTruncatingTail
+        lineBreakMode                              = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints  = false
     }
 }

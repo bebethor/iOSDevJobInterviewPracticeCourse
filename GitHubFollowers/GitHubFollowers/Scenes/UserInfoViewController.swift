@@ -10,21 +10,28 @@ import UIKit
 
 class UserInfoViewController: UIViewController {
     
+    // MARK: - IBOUTLETS -
     let headerContainerView          = UIView()
     let itemViewOneContainer         = UIView()
     let itemViewTwoContainer         = UIView()
+    
+    // MARK: - PROPERTIES -
     var username: String!
 
+    // MARK: - LYFE CYCLE -
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewController()
+        autolayoutUI()
+        getUserInfo()
+    }
+    
+    // MARK: - CONFIGURE UI -
+    func configureViewController() {
         view.backgroundColor = .systemBackground
-        
         title = username
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dissmisVC))
         navigationItem.rightBarButtonItem = doneButton
-        
-        autolayoutUI()
-        getUserInfo()
     }
     
     func autolayoutUI() {
@@ -60,6 +67,7 @@ class UserInfoViewController: UIViewController {
         ])
     }
     
+    // MARK: - FUNCTIONS -
     func add(childVC: UIViewController, to containerView: UIView) {
         addChild(childVC)
         containerView.addSubview(childVC.view)

@@ -10,33 +10,64 @@ import UIKit
 
 class UserInfoViewController: UIViewController {
     
-    let headerContainerView = UIView()
+    // MARK: - IBOUTLETS -
+    let headerContainerView          = UIView()
+    let itemViewOneContainer         = UIView()
+    let itemViewTwoContainer         = UIView()
+    
+    // MARK: - PROPERTIES -
+    var itemViewsArray = [UIView]()
     var username: String!
 
+    // MARK: - LYFE CYCLE -
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        
-        title = username
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dissmisVC))
-        navigationItem.rightBarButtonItem = doneButton
-        
+        configureViewController()
         autolayoutUI()
         getUserInfo()
     }
     
+    // MARK: - CONFIGURE UI -
+    func configureViewController() {
+        view.backgroundColor = .systemBackground
+        title = username
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dissmisVC))
+        navigationItem.rightBarButtonItem = doneButton
+    }
+    
     func autolayoutUI() {
-        view.addSubview(headerContainerView)
-        headerContainerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let padding: CGFloat    = 20
+        let itemHeight: CGFloat = 140
+        
+        itemViewsArray = [headerContainerView, itemViewOneContainer, itemViewTwoContainer]
+        
+        for item in itemViewsArray {
+            view.addSubview(item)
+            item.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                item.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+                item.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:  -padding),
+            ])
+        }
+        
+        itemViewOneContainer.backgroundColor = .systemPink
+        itemViewTwoContainer.backgroundColor = .systemBlue
         
         NSLayoutConstraint.activate([
-            headerContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerContainerView.heightAnchor.constraint(equalToConstant: 180)
+            headerContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            headerContainerView.heightAnchor.constraint(equalToConstant: 180),
+            
+            itemViewOneContainer.topAnchor.constraint(equalTo: headerContainerView.bottomAnchor, constant: padding),
+            itemViewOneContainer.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            itemViewTwoContainer.topAnchor.constraint(equalTo: itemViewOneContainer.bottomAnchor, constant: padding),
+            itemViewTwoContainer.heightAnchor.constraint(equalToConstant: itemHeight)
         ])
     }
     
+    // MARK: - FUNCTIONS -
     func add(childVC: UIViewController, to containerView: UIView) {
         addChild(childVC)
         containerView.addSubview(childVC.view)

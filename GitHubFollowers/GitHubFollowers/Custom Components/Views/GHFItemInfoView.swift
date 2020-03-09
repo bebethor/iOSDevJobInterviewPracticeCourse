@@ -8,16 +8,19 @@
 
 import UIKit
 
+enum infoItemType {
+    case repos, gists, followers, following
+}
 
 class GHFItemInfoView: UIView {
     
     // MARK: - UI Elements -
     let symbolImageView     = UIImageView()
     let titleLabel          = GHFTitleLabel(textAlignment: .left, fontSize: 14)
-    let countingReposLabel  = GHFTitleLabel(textAlignment: .center, fontSize: 14)
+    let countLabel  = GHFTitleLabel(textAlignment: .center, fontSize: 14)
     
     // MARK: - Properties -
-    var uiItemsArray     = [UIView]()
+    var uiItemsArray       = [UIView]()
     
     // MARK: - Inits -
     override init(frame: CGRect) {
@@ -31,7 +34,7 @@ class GHFItemInfoView: UIView {
     
     // MARK: - Configure Functions -
     func configure() {
-        uiItemsArray = [symbolImageView, titleLabel, countingReposLabel]
+        uiItemsArray = [symbolImageView, titleLabel, countLabel]
         
         for item in uiItemsArray {
             addSubview(item)
@@ -66,10 +69,28 @@ class GHFItemInfoView: UIView {
     
     func configureCountingReposLabel() {
         NSLayoutConstraint.activate([
-            countingReposLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            countingReposLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            countingReposLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            countingReposLabel.heightAnchor.constraint(equalToConstant: 18)
+            countLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+            countLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            countLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
+    }
+    
+    func set(infoItemType: infoItemType, withCount count: Int) {
+        switch infoItemType {
+        case .repos:
+            symbolImageView.image = UIImage(systemName: SFSymbols.repos)
+            titleLabel.text       = "Public Repos"
+        case .gists:
+            symbolImageView.image = UIImage(systemName: SFSymbols.gists)
+            titleLabel.text       = "Public Gists"
+        case .followers:
+            symbolImageView.image = UIImage(systemName: SFSymbols.followers)
+            titleLabel.text       = "Followers"
+        case .following:
+            symbolImageView.image = UIImage(systemName: SFSymbols.following)
+            titleLabel.text       = "Following"
+        }
+        countLabel.text = String(count)
     }
 }

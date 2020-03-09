@@ -22,7 +22,8 @@
 		2C8C9DB823FAC6A200675C30 /* GHFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */; };
 		2C8C9DBA23FAE6FD00675C30 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB923FAE6FD00675C30 /* UIViewController+Extension.swift */; };
 		2CA7FB922416602F0025C9C4 /* GHFItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7FB912416602F0025C9C4 /* GHFItemInfoViewController.swift */; };
-		2CEAA548241278C7008D497C /* GHFUserInfoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA547241278C7008D497C /* GHFUserInfoItemViewController.swift */; };
+		2CA7FB9424167B390025C9C4 /* GHFReposItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7FB9324167B390025C9C4 /* GHFReposItemViewController.swift */; };
+		2CA7FB9624168E510025C9C4 /* GHFFollowerItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7FB9524168E510025C9C4 /* GHFFollowerItemViewController.swift */; };
 		2CEAA54A24127E6B008D497C /* GHFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEAA54924127E6B008D497C /* GHFItemInfoView.swift */; };
 		2CFE5F4B24111F6B00F2FD23 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE5F4A24111F6B00F2FD23 /* Constants.swift */; };
 		BF4EFF1823F187C10050177E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EFF1723F187C10050177E /* SearchViewController.swift */; };
@@ -64,7 +65,8 @@
 		2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFAlertViewController.swift; sourceTree = "<group>"; };
 		2C8C9DB923FAE6FD00675C30 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		2CA7FB912416602F0025C9C4 /* GHFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFItemInfoViewController.swift; sourceTree = "<group>"; };
-		2CEAA547241278C7008D497C /* GHFUserInfoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFUserInfoItemViewController.swift; sourceTree = "<group>"; };
+		2CA7FB9324167B390025C9C4 /* GHFReposItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFReposItemViewController.swift; sourceTree = "<group>"; };
+		2CA7FB9524168E510025C9C4 /* GHFFollowerItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFFollowerItemViewController.swift; sourceTree = "<group>"; };
 		2CEAA54924127E6B008D497C /* GHFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFItemInfoView.swift; sourceTree = "<group>"; };
 		2CFE5F4A24111F6B00F2FD23 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BF4EFF1723F187C10050177E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -157,10 +159,9 @@
 		2C48A385240012530019FA0A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2CA7FB9724168F910025C9C4 /* Item Info View Controllers */,
 				2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */,
 				2C5A30EE2410115900F23ECD /* GHFUserInfoHeaderViewController.swift */,
-				2CEAA547241278C7008D497C /* GHFUserInfoItemViewController.swift */,
-				2CA7FB912416602F0025C9C4 /* GHFItemInfoViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -188,6 +189,16 @@
 				2CEAA54924127E6B008D497C /* GHFItemInfoView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2CA7FB9724168F910025C9C4 /* Item Info View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2CA7FB912416602F0025C9C4 /* GHFItemInfoViewController.swift */,
+				2CA7FB9324167B390025C9C4 /* GHFReposItemViewController.swift */,
+				2CA7FB9524168E510025C9C4 /* GHFFollowerItemViewController.swift */,
+			);
+			path = "Item Info View Controllers";
 			sourceTree = "<group>";
 		};
 		BF553C0223F2B22E00AD3667 /* Scenes */ = {
@@ -402,17 +413,18 @@
 				2CFE5F4B24111F6B00F2FD23 /* Constants.swift in Sources */,
 				BF553C0A23F2B30900AD3667 /* GHFTitleLabel.swift in Sources */,
 				2C42C09223FE990F00FD6B93 /* UIHelper.swift in Sources */,
+				2CA7FB9424167B390025C9C4 /* GHFReposItemViewController.swift in Sources */,
 				2CA7FB922416602F0025C9C4 /* GHFItemInfoViewController.swift in Sources */,
 				2C8C9DB823FAC6A200675C30 /* GHFAlertViewController.swift in Sources */,
 				2C8C9DB623FABE1A00675C30 /* GHFBodyLabel.swift in Sources */,
 				BF59A0F923EB1A80009A3200 /* AppDelegate.swift in Sources */,
-				2CEAA548241278C7008D497C /* GHFUserInfoItemViewController.swift in Sources */,
 				2C46BDDF23FC3C9700AB37DD /* GHFError.swift in Sources */,
 				2CEAA54A24127E6B008D497C /* GHFItemInfoView.swift in Sources */,
 				BF6169E423F1BE65002FEFB8 /* FollowersViewController.swift in Sources */,
 				2C48A38A240015E10019FA0A /* GHFEmptyStateView.swift in Sources */,
 				2C46BDD723FBF02100AB37DD /* Follower.swift in Sources */,
 				2C43E8DE23FD3A670051C698 /* GHFImageView.swift in Sources */,
+				2CA7FB9624168E510025C9C4 /* GHFFollowerItemViewController.swift in Sources */,
 				BF4EFF1A23F188420050177E /* FavoritesViewController.swift in Sources */,
 				2C46BDDC23FBFFD800AB37DD /* NetworkManager.swift in Sources */,
 				2C5A30F1241014B100F23ECD /* GHFSecondaryTitleLabel.swift in Sources */,

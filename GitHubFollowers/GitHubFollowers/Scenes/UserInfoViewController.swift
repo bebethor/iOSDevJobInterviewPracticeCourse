@@ -52,9 +52,6 @@ class UserInfoViewController: UIViewController {
             ])
         }
         
-        itemViewOneContainer.backgroundColor = .systemPink
-        itemViewTwoContainer.backgroundColor = .systemBlue
-        
         NSLayoutConstraint.activate([
             headerContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
             headerContainerView.heightAnchor.constraint(equalToConstant: 180),
@@ -87,7 +84,7 @@ class UserInfoViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView)
                     self.add(childVC: GHFReposItemViewController(user: user), to: self.itemViewOneContainer)
-                    self.add(childVC: GHFFollowerItemViewController, to: user)
+                    self.add(childVC: GHFFollowerItemViewController(user: user), to: self.itemViewTwoContainer)
                 }
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")

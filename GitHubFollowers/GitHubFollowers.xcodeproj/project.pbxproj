@@ -159,11 +159,9 @@
 		2C48A385240012530019FA0A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2CA7FB9724168F910025C9C4 /* Item Info View Controllers */,
 				2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */,
 				2C5A30EE2410115900F23ECD /* GHFUserInfoHeaderViewController.swift */,
-				2CA7FB912416602F0025C9C4 /* GHFItemInfoViewController.swift */,
-				2CA7FB9324167B390025C9C4 /* GHFReposItemViewController.swift */,
-				2CA7FB9524168E510025C9C4 /* GHFFollowerItemViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -191,6 +189,16 @@
 				2CEAA54924127E6B008D497C /* GHFItemInfoView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2CA7FB9724168F910025C9C4 /* Item Info View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2CA7FB912416602F0025C9C4 /* GHFItemInfoViewController.swift */,
+				2CA7FB9324167B390025C9C4 /* GHFReposItemViewController.swift */,
+				2CA7FB9524168E510025C9C4 /* GHFFollowerItemViewController.swift */,
+			);
+			path = "Item Info View Controllers";
 			sourceTree = "<group>";
 		};
 		BF553C0223F2B22E00AD3667 /* Scenes */ = {

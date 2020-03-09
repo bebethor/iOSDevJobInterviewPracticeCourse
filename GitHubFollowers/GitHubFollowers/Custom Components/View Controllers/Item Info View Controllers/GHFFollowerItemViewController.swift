@@ -13,11 +13,12 @@ class GHFFollowerItemViewController: GHFItemInfoViewController {
     // MARK: - Lyfe Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureItems()
     }
     
     private func configureItems() {
         itemInfoViewOne.set(infoItemType: .followers, withCount: user.publicRepos)
         itemInfoViewTwo.set(infoItemType: .following, withCount: user.publicGists)
-        actionButton.set(backgroundColor: .systemPurple, title: "Get Followers")
+        actionButton.set(backgroundColor: .systemGreen, title: "Get Followers")
     }
 }

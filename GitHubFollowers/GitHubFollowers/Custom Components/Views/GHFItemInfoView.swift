@@ -17,7 +17,7 @@ class GHFItemInfoView: UIView {
     // MARK: - UI Elements -
     let symbolImageView     = UIImageView()
     let titleLabel          = GHFTitleLabel(textAlignment: .left, fontSize: 14)
-    let countLabel  = GHFTitleLabel(textAlignment: .center, fontSize: 14)
+    let countLabel          = GHFTitleLabel(textAlignment: .center, fontSize: 14)
     
     // MARK: - Properties -
     var uiItemsArray       = [UIView]()
@@ -36,9 +36,8 @@ class GHFItemInfoView: UIView {
     func configure() {
         uiItemsArray = [symbolImageView, titleLabel, countLabel]
         
-        for item in uiItemsArray {
+        for item in self.uiItemsArray {
             addSubview(item)
-            item.translatesAutoresizingMaskIntoConstraints = false
         }
         
         configureSymbolImageView()
@@ -49,7 +48,7 @@ class GHFItemInfoView: UIView {
     func configureSymbolImageView() {
         symbolImageView.contentMode = .scaleAspectFill
         symbolImageView.tintColor   = .label
-        
+        symbolImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             symbolImageView.topAnchor.constraint(equalTo: self.topAnchor),
             symbolImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -61,7 +60,7 @@ class GHFItemInfoView: UIView {
     func configureTitleLabel() {
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: symbolImageView.leadingAnchor, constant: 12),
+            titleLabel.leadingAnchor.constraint(equalTo: symbolImageView.trailingAnchor, constant: 12),
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 18)
         ])

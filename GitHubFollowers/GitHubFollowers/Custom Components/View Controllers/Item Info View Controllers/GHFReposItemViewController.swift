@@ -13,6 +13,7 @@ class GHFReposItemViewController: GHFItemInfoViewController {
     // MARK: - Lyfe Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureItems()
     }
     
     private func configureItems() {

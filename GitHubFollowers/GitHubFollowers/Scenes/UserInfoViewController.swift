@@ -86,6 +86,8 @@ class UserInfoViewController: UIViewController {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView)
+                    self.add(childVC: GHFReposItemViewController(user: user), to: self.itemViewOneContainer)
+                    self.add(childVC: GHFFollowerItemViewController, to: user)
                 }
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")

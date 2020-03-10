@@ -14,6 +14,7 @@ class UserInfoViewController: UIViewController {
     let headerContainerView          = UIView()
     let itemViewOneContainer         = UIView()
     let itemViewTwoContainer         = UIView()
+    let dateLabel                    = GHFBodyLabel(textAligment: .center)
     
     // MARK: - PROPERTIES -
     var itemViewsArray = [UIView]()
@@ -36,11 +37,10 @@ class UserInfoViewController: UIViewController {
     }
     
     func autolayoutUI() {
-        
         let padding: CGFloat    = 20
         let itemHeight: CGFloat = 140
         
-        itemViewsArray = [headerContainerView, itemViewOneContainer, itemViewTwoContainer]
+        itemViewsArray = [headerContainerView, itemViewOneContainer, itemViewTwoContainer, dateLabel]
         
         for item in itemViewsArray {
             view.addSubview(item)
@@ -60,7 +60,10 @@ class UserInfoViewController: UIViewController {
             itemViewOneContainer.heightAnchor.constraint(equalToConstant: itemHeight),
             
             itemViewTwoContainer.topAnchor.constraint(equalTo: itemViewOneContainer.bottomAnchor, constant: padding),
-            itemViewTwoContainer.heightAnchor.constraint(equalToConstant: itemHeight)
+            itemViewTwoContainer.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            dateLabel.topAnchor.constraint(equalTo: itemViewTwoContainer.bottomAnchor, constant: padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
     
@@ -85,6 +88,7 @@ class UserInfoViewController: UIViewController {
                     self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView)
                     self.add(childVC: GHFReposItemViewController(user: user), to: self.itemViewOneContainer)
                     self.add(childVC: GHFFollowerItemViewController(user: user), to: self.itemViewTwoContainer)
+                    self.dateLabel.text = user.createdAt
                 }
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")

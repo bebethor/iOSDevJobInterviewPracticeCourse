@@ -88,7 +88,7 @@ class UserInfoViewController: UIViewController {
                     self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView)
                     self.add(childVC: GHFReposItemViewController(user: user), to: self.itemViewOneContainer)
                     self.add(childVC: GHFFollowerItemViewController(user: user), to: self.itemViewTwoContainer)
-                    self.dateLabel.text = user.createdAt
+                    self.dateLabel.text = "Github Since \(user.createdAt.convertDateToDisplayFormat())"
                 }
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")

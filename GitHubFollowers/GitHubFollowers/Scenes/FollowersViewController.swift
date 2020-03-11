@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol FollowersViewControllerDelegate {
-    <#requirements#>
+protocol FollowersViewControllerDelegate: class {
+    func didRequestFollowers(for userName: String)
 }
 
 class FollowersViewController: UIViewController {
@@ -19,7 +19,7 @@ class FollowersViewController: UIViewController {
     var collectionView: UICollectionView!
 
     // MARK: - Properties -
-    var userName: String!
+    var username: String!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     var followers: [Follower] = []
     var filteredFollowers: [Follower] = []
@@ -33,7 +33,7 @@ class FollowersViewController: UIViewController {
         configureViewController()
         configureCollectionView()
         configureSearchController()
-        getFollowers(username: userName, page: page)
+        getFollowers(username: username, page: page)
         configureDataSource()
     }
     
@@ -68,7 +68,7 @@ class FollowersViewController: UIViewController {
     // MARK: - Functions -
     func getFollowers(username: String, page: Int) {
         showLoading()
-        NetworkManager.shared.getFollowers(for: userName, page: page) { [weak self] (result) in
+        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] (result) in
             guard let self = self else { return }
             self.dismissLoading()
             switch result {
@@ -122,7 +122,7 @@ extension FollowersViewController: UICollectionViewDelegate {
         if offsetY > contentHeight - height {
             guard hasMoreFollowers else { return }
             page += 1
-            getFollowers(username: userName, page: page)
+            getFollowers(username: username, page: page)
         }
     }
     
@@ -132,6 +132,7 @@ extension FollowersViewController: UICollectionViewDelegate {
         
         let destinationVC        = UserInfoViewController()
         destinationVC.username   = follower.login
+        destinationVC.delegate   = self
         let navigationController = UINavigationController(rootViewController: destinationVC)
         
         present(navigationController, animated: true, completion: nil)
@@ -151,5 +152,17 @@ extension FollowersViewController: UISearchResultsUpdating, UISearchBarDelegate 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         updateData(on: self.followers)
+    }
+}
+
+extension FollowersViewController: FollowersViewControllerDelegate {
+    func didRequestFollowers(for username: String) {
+        self.username = username
+        title         = username
+        page          = 1
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        getFollowers(username: username, page: page )
     }
 }

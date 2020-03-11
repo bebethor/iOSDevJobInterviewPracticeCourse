@@ -24,6 +24,7 @@ class UserInfoViewController: UIViewController {
     // MARK: - PROPERTIES -
     var itemViewsArray = [UIView]()
     var username: String!
+    weak var delegate: FollowersViewControllerDelegate!
 
     // MARK: - LYFE CYCLE -
     override func viewDidLoad() {
@@ -126,7 +127,12 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
     }
     
     func didTapGetFollowersButton(for user: User) {
-        dissmisVC() 
-        
+        guard user.followers != 0 else {
+            presentGHFAlertOnMainThreat(title: "No followers", message: "This user has no followers...☹️", buttonTitle: "Ok")
+            return
+        }
+    
+        delegate.didRequestFollowers(for: user.login)
+        dissmisVC()
     }
 }

@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol UserInfoViewControllerDelegate: class {
+    func didTapGitHubProfileButton()
+    func didTapGetFollowersButton()
+}
+
 class UserInfoViewController: UIViewController {
     
     // MARK: - IBOUTLETS -
@@ -85,14 +90,41 @@ class UserInfoViewController: UIViewController {
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
-                    self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView)
-                    self.add(childVC: GHFReposItemViewController(user: user), to: self.itemViewOneContainer)
-                    self.add(childVC: GHFFollowerItemViewController(user: user), to: self.itemViewTwoContainer)
-                    self.dateLabel.text = "Github Since \(user.createdAt.convertDateToDisplayFormat())"
+                    self.configureUIElements(with: user)
                 }
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
+    }
+    
+    func configureUIElements(with user: User) {
+        // Add header
+        self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView)
+        
+        // Add repo item view
+        let repoViewController      = GHFReposItemViewController(user: user)
+        repoViewController.delegate = self
+        self.add(childVC: repoViewController, to: self.itemViewOneContainer)
+        
+        // Add follower item view
+        let followerItemViewController      = GHFFollowerItemViewController(user: user)
+        followerItemViewController.delegate = self
+        self.add(childVC:followerItemViewController, to: self.itemViewTwoContainer)
+        
+        self.dateLabel.text = "Github Since \(user.createdAt.convertDateToDisplayFormat())"
+    }
+}
+
+extension UserInfoViewController: UserInfoViewControllerDelegate {
+    func didTapGitHubProfileButton() {
+        // Show safari view controller
+        print("didTapGitHubProfileButton")
+    }
+    
+    func didTapGetFollowersButton() {
+        // dismiss
+        // Show Followers view controller with new user
+        print("didTapGetFollowersButton")
     }
 }

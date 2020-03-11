@@ -18,6 +18,7 @@ class GHFItemInfoViewController: UIViewController {
     
     // MARK: - Properties -
     var user: User!
+    var delegate: UserInfoViewControllerDelegate!
     
     // MARK: - Inits -
     init(user: User) {
@@ -33,6 +34,7 @@ class GHFItemInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackgroundView()
+        configureActionButton()
         autoLayoutUI()
         configureStackView()
     }
@@ -50,6 +52,13 @@ class GHFItemInfoViewController: UIViewController {
         stackView.addArrangedSubview(itemInfoViewOne)
         stackView.addArrangedSubview(itemInfoViewTwo)
     }
+    
+    private func configureActionButton() {
+        self.actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+    }
+    
+    // this func is overriden in the GHFItemInfoViewController subclasses (GHFReposItemViewController, GHFFollowerItemViewController)
+    @objc func actionButtonTapped() {}
     
     private func autoLayoutUI() {
         view.addSubview(stackView)

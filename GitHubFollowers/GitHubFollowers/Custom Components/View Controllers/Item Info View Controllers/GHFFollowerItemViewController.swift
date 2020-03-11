@@ -16,6 +16,10 @@ class GHFFollowerItemViewController: GHFItemInfoViewController {
         configureItems()
     }
     
+    override func actionButtonTapped() {
+        delegate.didTapGetFollowersButton()
+    }
+    
     private func configureItems() {
         itemInfoViewOne.set(infoItemType: .followers, withCount: user.publicRepos)
         itemInfoViewTwo.set(infoItemType: .following, withCount: user.publicGists)

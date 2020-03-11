@@ -16,6 +16,10 @@ class GHFReposItemViewController: GHFItemInfoViewController {
         configureItems()
     }
     
+    override func actionButtonTapped() {
+        delegate.didTapGitHubProfileButton()
+    }
+    
     private func configureItems() {
         itemInfoViewOne.set(infoItemType: .repos, withCount: user.publicRepos)
         itemInfoViewTwo.set(infoItemType: .gists, withCount: user.publicGists)

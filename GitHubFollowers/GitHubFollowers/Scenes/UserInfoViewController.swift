@@ -9,8 +9,8 @@
 import UIKit
 
 protocol UserInfoViewControllerDelegate: class {
-    func didTapGitHubProfileButton()
-    func didTapGetFollowersButton()
+    func didTapGitHubProfileButton(for user: User)
+    func didTapGetFollowersButton(for user: User)
 }
 
 class UserInfoViewController: UIViewController {
@@ -117,14 +117,16 @@ class UserInfoViewController: UIViewController {
 }
 
 extension UserInfoViewController: UserInfoViewControllerDelegate {
-    func didTapGitHubProfileButton() {
-        // Show safari view controller
-        print("didTapGitHubProfileButton")
+    func didTapGitHubProfileButton(for user: User) {
+        guard let url = URL(string: user.htmlUrl) else {
+            presentGHFAlertOnMainThreat(title: "Invalid URL", message: "The URL attached to this user is invalid", buttonTitle: "Ok")
+            return
+        }
+        self.showSafariViewController(with: url)
     }
     
-    func didTapGetFollowersButton() {
-        // dismiss
-        // Show Followers view controller with new user
-        print("didTapGetFollowersButton")
+    func didTapGetFollowersButton(for user: User) {
+        dissmisVC() 
+        
     }
 }

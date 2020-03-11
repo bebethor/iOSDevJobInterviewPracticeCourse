@@ -17,7 +17,7 @@ class GHFReposItemViewController: GHFItemInfoViewController {
     }
     
     override func actionButtonTapped() {
-        delegate.didTapGitHubProfileButton()
+        delegate.didTapGitHubProfileButton(for: user)
     }
     
     private func configureItems() {

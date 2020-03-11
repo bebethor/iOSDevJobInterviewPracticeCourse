@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol FollowersViewControllerDelegate {
+    <#requirements#>
+}
+
 class FollowersViewController: UIViewController {
     enum Section { case main }
     

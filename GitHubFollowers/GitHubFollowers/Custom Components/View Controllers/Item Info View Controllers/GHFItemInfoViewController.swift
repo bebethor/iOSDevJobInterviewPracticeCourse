@@ -18,7 +18,7 @@ class GHFItemInfoViewController: UIViewController {
     
     // MARK: - Properties -
     var user: User!
-    var delegate: UserInfoViewControllerDelegate!
+    weak var delegate: UserInfoViewControllerDelegate!
     
     // MARK: - Inits -
     init(user: User) {

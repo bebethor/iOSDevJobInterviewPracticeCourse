@@ -17,7 +17,7 @@ class GHFFollowerItemViewController: GHFItemInfoViewController {
     }
     
     override func actionButtonTapped() {
-        delegate.didTapGetFollowersButton()
+        delegate.didTapGetFollowersButton(for: user)
     }
     
     private func configureItems() {

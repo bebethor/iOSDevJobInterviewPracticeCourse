@@ -146,6 +146,7 @@
 		2C46BDDD23FC3C4F00AB37DD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2CFE5F4A24111F6B00F2FD23 /* Constants.swift */,
 				2C46BDDE23FC3C9700AB37DD /* GHFError.swift */,
 				2C42C09123FE990F00FD6B93 /* UIHelper.swift */,
 			);
@@ -287,7 +288,6 @@
 		BF59A0F723EB1A80009A3200 /* GitHubFollowers */ = {
 			isa = PBXGroup;
 			children = (
-				2CFE5F4A24111F6B00F2FD23 /* Constants.swift */,
 				2C46BDDD23FC3C4F00AB37DD /* Utilities */,
 				2C46BDDA23FBFFC500AB37DD /* Managers */,
 				2C46BDD523FBF00600AB37DD /* Model */,

@@ -13,6 +13,7 @@ protocol FollowersViewControllerDelegate: class {
 }
 
 class FollowersViewController: UIViewController {
+    
     enum Section { case main }
     
     // MARK: - Outlets -
@@ -46,6 +47,8 @@ class FollowersViewController: UIViewController {
     func configureViewController() {
         view.backgroundColor                                    = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles  = true
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
     }
     
     func configureCollectionView() {
@@ -108,6 +111,13 @@ class FollowersViewController: UIViewController {
         snapshot.appendItems(followers)
         
         DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true, completion: nil) }
+    }
+    
+    // MARK: - Actions -
+    @objc func addButtonTapped() {
+        print("Button Tapped")
+        let favoritesVC = FavoritesViewController()
+        self.present(favoritesVC, animated: true)
     }
 }
 

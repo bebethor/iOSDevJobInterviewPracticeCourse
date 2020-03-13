@@ -13,6 +13,7 @@ protocol FollowersViewControllerDelegate: class {
 }
 
 class FollowersViewController: UIViewController {
+    
     enum Section { case main }
     
     // MARK: - Outlets -

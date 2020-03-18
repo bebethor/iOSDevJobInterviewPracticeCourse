@@ -21,13 +21,16 @@ enum PersistanceManager {
     }
     
     static func updateWith(favorite: Follower, actionType: PersistenceActionType, completion: @escaping(GHFError?) -> Void ) {
+        // Recuperar favoritos del userDefaults
         retrieveFavorites { ( result ) in
+            // Evaluamos
             switch result {
             case .success(let favorites):
                 var retrievedFavorites = favorites // because favorites is inmutable we need a temporal array
                 switch actionType {
+                // En el caso succes, añadidos o borramos
                 case .add:
-                    guard retrievedFavorites.contains(favorite) else {
+                    guard !retrievedFavorites.contains(favorite) else {
                         completion(.alreadyFavorites)
                         return
                     }
@@ -42,6 +45,7 @@ enum PersistanceManager {
         }
     }
     
+    // Devuelve el array de favoritos (decodifica) de userDefaults
     static func retrieveFavorites(completed: @escaping (Result<[Follower], GHFError>) -> Void) {
         guard let favoritesData = defaults.object(forKey: keys.favorites) as? Data else {
             // En caso de que favoritesData sea "nil" es por que nunca se ha guardado nada en "favoritesData" antes. En ese caso se devuelve un array vacio en el succes.

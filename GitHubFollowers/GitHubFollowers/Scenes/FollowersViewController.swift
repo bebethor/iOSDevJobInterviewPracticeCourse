@@ -115,9 +115,24 @@ class FollowersViewController: UIViewController {
     
     // MARK: - Actions -
     @objc func addButtonTapped() {
-        print("Button Tapped")
-        let favoritesVC = FavoritesViewController()
-        self.present(favoritesVC, animated: true)
+        showLoading()
+        NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
+            guard let self = self else { return }
+            self.dismissLoading()
+            switch result {
+            case .success(let user):
+                let favoriteFollower = Follower(login: user.login, avatarUrl: user.avatarUrl)
+                PersistanceManager.updateWith(favorite: favoriteFollower, actionType: .add) { error in
+                    guard let error = error else {
+                        self.presentGHFAlertOnMainThreat(title: "Succes!", message: "Favorited User", buttonTitle: "Ok")
+                        return
+                    }
+                    self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+                }
+            case .failure(let error):
+                self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
     }
 }
 

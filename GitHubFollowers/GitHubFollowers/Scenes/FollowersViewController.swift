@@ -124,7 +124,7 @@ class FollowersViewController: UIViewController {
                 let favoriteFollower = Follower(login: user.login, avatarUrl: user.avatarUrl)
                 PersistanceManager.updateWith(favorite: favoriteFollower, actionType: .add) { error in
                     guard let error = error else {
-                        self.presentGHFAlertOnMainThreat(title: "Succes!", message: "Favorited User", buttonTitle: "Ok")
+                        self.presentGHFAlertOnMainThreat(title: "Succes!!!", message: "You have successfully favorited this user 🎉!!!", buttonTitle: "Ok")
                         return
                     }
                     self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")

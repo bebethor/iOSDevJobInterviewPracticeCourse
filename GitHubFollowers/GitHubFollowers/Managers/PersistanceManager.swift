@@ -20,19 +20,24 @@ enum PersistanceManager {
         static let favorites = "favorites"
     }
     
-    static func updateWith(favorite: Follower, actionType: PersistenceActionType, completion: @escaping(GHFError) -> Void ) {
+    static func updateWith(favorite: Follower, actionType: PersistenceActionType, completion: @escaping(GHFError?) -> Void ) {
         retrieveFavorites { ( result ) in
             switch result {
             case .success(let favorites):
-                
-                
-                var retrievedFavorites = favorites // because favorites is 
-                
-                
-                
-                break
+                var retrievedFavorites = favorites // because favorites is inmutable we need a temporal array
+                switch actionType {
+                case .add:
+                    guard retrievedFavorites.contains(favorite) else {
+                        completion(.alreadyFavorites)
+                        return
+                    }
+                    retrievedFavorites.append(favorite)
+                case .remove:
+                    retrievedFavorites.removeAll { $0.login == favorite.login }
+                }
+                completion(save(favorites: favorites))
             case .failure(let error):
-                break
+                completion(error)
             }
         }
     }

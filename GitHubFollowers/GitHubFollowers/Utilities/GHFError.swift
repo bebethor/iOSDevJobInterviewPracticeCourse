@@ -13,4 +13,6 @@ enum GHFError: String, Error {
     case unableToComplete   = "Unable to complete request. Invalid URL"
     case invalidResponse    = "Invalid response from server"
     case invalidData        = "Invalid data received from server"
+    case unableToFavorite   = "There was an error favoriting this user. Please try again."
+    case alreadyFavorites   = "You´ve already favorited this user. You must REALLY like him!"
 }

@@ -31,7 +31,7 @@ class GHFCollectionViewCell: UICollectionViewCell {
     }
     
     
-    // MARK: - Functions -
+    // MARK: - Configure UI functions -
     func set(follower: Follower) {
         userNameLabel.text = follower.login
         avatarImageView.downLoadImage(from: follower.avatarUrl)

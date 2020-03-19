@@ -15,7 +15,27 @@ class GHFFavoriteTableViewCell: UITableViewCell {
     let avatarImageView  = GHFImageView(frame: .zero)
     let userNameLabel    = GHFTitleLabel(textAlignment: .center, fontSize:216)
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        configure()
+    }
     
+    // MARK: - Inits -
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
+    // MARK: - Configure UI functions -
+    func configure() {
+        addSubview(avatarImageView)
+        addSubview(userNameLabel)
+        
+        accessoryType = .disclosureIndicator
+        let padding: CGFloat = 12
+        NSLayoutConstraint.activate([
+            
+        ])
+    }
     
 }

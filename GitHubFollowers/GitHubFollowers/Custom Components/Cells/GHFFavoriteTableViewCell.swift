@@ -38,7 +38,11 @@ class GHFFavoriteTableViewCell: UITableViewCell {
             avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             avatarImageView.heightAnchor.constraint(equalToConstant: 60),
             avatarImageView.widthAnchor.constraint(equalToConstant: 60),
+            
+            userNameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            userNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 24),
+            userNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            userNameLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
-    
 }

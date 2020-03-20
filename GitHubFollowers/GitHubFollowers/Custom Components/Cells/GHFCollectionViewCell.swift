@@ -10,12 +10,16 @@ import UIKit
 
 class GHFCollectionViewCell: UICollectionViewCell {
     
-    static let reuseID = "FollowerCell"
+    // MARK: - UI Elements -
+    static let reuseID   = "FollowerCell"
+    let avatarImageView  = GHFImageView(frame: .zero)
+    let userNameLabel    = GHFTitleLabel(textAlignment: .center, fontSize: 16)
     
-    let avatarImageView = GHFImageView(frame: .zero)
-    let userNameLabel = GHFTitleLabel(textAlignment: .center, fontSize: 16)
+    // MARK: - Properties -
     let padding: CGFloat = 8
     
+    
+    // MARK: - Inits -
     override init(frame: CGRect) {
         super.init(frame: frame)
         // Custom code here
@@ -26,6 +30,8 @@ class GHFCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: - Configure UI functions -
     func set(follower: Follower) {
         userNameLabel.text = follower.login
         avatarImageView.downLoadImage(from: follower.avatarUrl)

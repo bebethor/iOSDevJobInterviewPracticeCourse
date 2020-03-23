@@ -13,7 +13,7 @@ class GHFFavoriteTableViewCell: UITableViewCell {
     // MARK: - UI Elements -
     static let reuseID   = "FavoritCell"
     let avatarImageView  = GHFImageView(frame: .zero)
-    let userNameLabel    = GHFTitleLabel(textAlignment: .center, fontSize:216)
+    let userNameLabel    = GHFTitleLabel(textAlignment: .left, fontSize:16)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

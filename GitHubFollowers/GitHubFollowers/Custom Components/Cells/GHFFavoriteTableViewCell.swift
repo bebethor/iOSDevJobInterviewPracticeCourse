@@ -27,6 +27,11 @@ class GHFFavoriteTableViewCell: UITableViewCell {
     }
     
     // MARK: - Configure UI functions -
+    func set(favorite: Follower) {
+        userNameLabel.text = favorite.login
+        avatarImageView.downLoadImage(from: favorite.avatarUrl)
+    }
+    
     func configure() {
         addSubview(avatarImageView)
         addSubview(userNameLabel)

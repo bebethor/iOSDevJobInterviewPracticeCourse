@@ -19,6 +19,12 @@ class FavoritesViewController: UIViewController {
     // MARK: - Life Cycle -
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewController()
+        configureTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getFavorites()
     }
     
@@ -29,15 +35,47 @@ class FavoritesViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    func configureTableView() {
+        view.addSubview(tableView)
+        tableView.frame         = view.bounds
+        tableView.rowHeight     = 80
+        tableView.delegate      = self
+        tableView.dataSource    = self
+        
+        tableView.register(GHFFavoriteTableViewCell.self, forCellReuseIdentifier: GHFFavoriteTableViewCell.reuseID)
+    }
+    
     func getFavorites() {
-        PersistanceManager.retrieveFavorites { ( result ) in
+        PersistanceManager.retrieveFavorites { [ weak self ] result in
+            guard let self = self else { return }
             switch result {
             case .success(let favorites):
-                self.favoritesFollowers = favorites
-                print(self.favoritesFollowers)
+                if favorites.isEmpty {
+                    self.showEmptyStateView(with: "No favorites\nAdd one on the follower screen.", in: self.view)
+                } else {
+                    self.favoritesFollowers = favorites
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.view.bringSubviewToFront(self.tableView)
+                    }
+                }
             case .failure(let error):
-                break
+                self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
+    }
+}
+
+extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        favoritesFollowers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let favoriteFollower = favoritesFollowers[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: GHFFavoriteTableViewCell.reuseID) as! GHFFavoriteTableViewCell
+        cell.set(favorite: favoriteFollower)
+        
+        return cell
     }
 }

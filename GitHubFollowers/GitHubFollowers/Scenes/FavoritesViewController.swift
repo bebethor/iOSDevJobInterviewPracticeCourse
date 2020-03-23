@@ -22,7 +22,6 @@ class FavoritesViewController: UIViewController {
         getFavorites()
     }
     
-    
     // MARK: - Functions -
     func configureViewController() {
         view.backgroundColor = .systemBackground

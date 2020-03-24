@@ -66,7 +66,10 @@ class FavoritesViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions -
 extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    // DataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         favoritesFollowers.count
     }
@@ -77,5 +80,29 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.set(favorite: favoriteFollower)
         
         return cell
+    }
+    
+    // Delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let favoriteFollower = favoritesFollowers[indexPath.row]
+        let destinationVC    = FollowersViewController()
+        destinationVC.username = favoriteFollower.login
+        destinationVC.title    = favoriteFollower.login
+        
+        navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        
+        let favorite = favoritesFollowers[indexPath.row]
+        favoritesFollowers.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .left)
+        
+        PersistanceManager.updateWith(favorite: favorite, actionType: .remove) { [ weak self ] error in
+            guard let self = self else { return }
+            guard let error = error else { return }
+            self.presentGHFAlertOnMainThreat(title: "Unable to remove", message: error.rawValue, buttonTitle: "Ok")
+        }
     }
 }

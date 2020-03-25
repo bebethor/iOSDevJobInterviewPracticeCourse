@@ -35,13 +35,14 @@ class SearchViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
         //userTextField.text?.removeAll()
+        userTextField.text = ""
     }
     
     // MARK: - Configure UI -
     func configureLogoImageView() {
         view.addSubview(logoImageView)
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = UIImage(named: "gh-logo")
+        logoImageView.image = Images.ghLogo
         
         let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
 //        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)// anchor to top (vertical)
@@ -58,7 +59,6 @@ class SearchViewController: UIViewController {
     func configureUserTextField() {
         view.addSubview(userTextField)
         userTextField.delegate = self
-        userTextField.text = "SAllen0400"
         NSLayoutConstraint.activate([
             userTextField.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 48),
             userTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50), // left
@@ -80,7 +80,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - Functions -
     func dismissKeyBoardTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tapGesture)
     }
     
@@ -92,9 +92,9 @@ class SearchViewController: UIViewController {
             return
         }
         
-        let followersViewController       = FollowersViewController()
-        followersViewController.username  = userTextField.text
-        followersViewController.title     = userTextField.text
+        userTextField.resignFirstResponder()
+        
+        let followersViewController       = FollowersViewController(username: userTextField.text!) // Se fuerza el desempaquetado por que ya se hace la comprobación de que tengamos texto en el botón
         
         navigationController?.pushViewController(followersViewController, animated: true)
     }

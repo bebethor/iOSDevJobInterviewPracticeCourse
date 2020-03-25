@@ -19,6 +19,7 @@
 		2C5A30EF2410115900F23ECD /* GHFUserInfoHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5A30EE2410115900F23ECD /* GHFUserInfoHeaderViewController.swift */; };
 		2C5A30F1241014B100F23ECD /* GHFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5A30F0241014B100F23ECD /* GHFSecondaryTitleLabel.swift */; };
 		2C5E7409242399C00078FEC7 /* GHFFavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5E7408242399C00078FEC7 /* GHFFavoriteTableViewCell.swift */; };
+		2C61DA34242A62C700D68DB2 /* GHFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C61DA33242A62C700D68DB2 /* GHFTabBarController.swift */; };
 		2C72B8D22404393000D6A23C /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C72B8D12404393000D6A23C /* UserInfoViewController.swift */; };
 		2C8C9DB623FABE1A00675C30 /* GHFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB523FABE1A00675C30 /* GHFBodyLabel.swift */; };
 		2C8C9DB823FAC6A200675C30 /* GHFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */; };
@@ -66,6 +67,7 @@
 		2C5A30EE2410115900F23ECD /* GHFUserInfoHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFUserInfoHeaderViewController.swift; sourceTree = "<group>"; };
 		2C5A30F0241014B100F23ECD /* GHFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
 		2C5E7408242399C00078FEC7 /* GHFFavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFFavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		2C61DA33242A62C700D68DB2 /* GHFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFTabBarController.swift; sourceTree = "<group>"; };
 		2C72B8D12404393000D6A23C /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		2C8C9DB523FABE1A00675C30 /* GHFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFBodyLabel.swift; sourceTree = "<group>"; };
 		2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFAlertViewController.swift; sourceTree = "<group>"; };
@@ -167,22 +169,22 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
-		2C48A385240012530019FA0A /* View Controllers */ = {
+		2C48A385240012530019FA0A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				2CA7FB9724168F910025C9C4 /* Item Info View Controllers */,
 				2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */,
 				2C5A30EE2410115900F23ECD /* GHFUserInfoHeaderViewController.swift */,
 			);
-			path = "View Controllers";
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		2C48A386240012660019FA0A /* Image Views */ = {
+		2C48A386240012660019FA0A /* ImageViews */ = {
 			isa = PBXGroup;
 			children = (
 				2C43E8DD23FD3A670051C698 /* GHFImageView.swift */,
 			);
-			path = "Image Views";
+			path = ImageViews;
 			sourceTree = "<group>";
 		};
 		2C48A387240012880019FA0A /* Buttons */ = {
@@ -200,6 +202,14 @@
 				2CEAA54924127E6B008D497C /* GHFItemInfoView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2C61DA32242A624700D68DB2 /* TabBarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C61DA33242A62C700D68DB2 /* GHFTabBarController.swift */,
+			);
+			path = TabBarControllers;
 			sourceTree = "<group>";
 		};
 		2CA7FB9724168F910025C9C4 /* Item Info View Controllers */ = {
@@ -245,10 +255,11 @@
 		BF553C0523F2B28400AD3667 /* Custom Components */ = {
 			isa = PBXGroup;
 			children = (
+				2C61DA32242A624700D68DB2 /* TabBarControllers */,
 				2C48A388240015C90019FA0A /* Views */,
 				2C48A387240012880019FA0A /* Buttons */,
-				2C48A386240012660019FA0A /* Image Views */,
-				2C48A385240012530019FA0A /* View Controllers */,
+				2C48A386240012660019FA0A /* ImageViews */,
+				2C48A385240012530019FA0A /* ViewControllers */,
 				2C48A384240012460019FA0A /* TextFields */,
 				2C43E8DA23FD370C0051C698 /* Cells */,
 				2C43E8DF23FD3A750051C698 /* Labels */,
@@ -294,10 +305,10 @@
 		BF59A0F723EB1A80009A3200 /* GitHubFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				BF553C0323F2B25200AD3667 /* Support */,
 				2C46BDDD23FC3C4F00AB37DD /* Utilities */,
 				2C46BDDA23FBFFC500AB37DD /* Managers */,
 				2C46BDD523FBF00600AB37DD /* Model */,
-				BF553C0323F2B25200AD3667 /* Support */,
 				BF553C0223F2B22E00AD3667 /* Scenes */,
 				BF553C0523F2B28400AD3667 /* Custom Components */,
 				BF553C0423F2B27600AD3667 /* Extensions */,
@@ -441,6 +452,7 @@
 				2CA7FB9624168E510025C9C4 /* GHFFollowerItemViewController.swift in Sources */,
 				BF4EFF1A23F188420050177E /* FavoritesViewController.swift in Sources */,
 				2C46BDDC23FBFFD800AB37DD /* NetworkManager.swift in Sources */,
+				2C61DA34242A62C700D68DB2 /* GHFTabBarController.swift in Sources */,
 				2C5A30F1241014B100F23ECD /* GHFSecondaryTitleLabel.swift in Sources */,
 				BF4EFF1C23F19E7E0050177E /* GHFButton.swift in Sources */,
 				2CA7FB99241782A90025C9C4 /* Date+Extension.swift in Sources */,

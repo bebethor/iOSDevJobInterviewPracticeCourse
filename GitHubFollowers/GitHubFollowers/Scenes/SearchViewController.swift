@@ -19,6 +19,7 @@ class SearchViewController: UIViewController {
     var isUserNameEntered: Bool {
         return !userTextField.text!.isEmpty
     }
+    var logoImageViewTopConstraint: NSLayoutConstraint!
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -42,8 +43,12 @@ class SearchViewController: UIViewController {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = UIImage(named: "gh-logo")
         
+        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+//        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)// anchor to top (vertical)
+//        logoImageViewTopConstraint.isActive = true
+        
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80), // anchor to top (vertical)
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant),// anchor to top (vertical)
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor), // center x anchor. Center horizontally
             logoImageView.widthAnchor.constraint(equalToConstant: 200), // width
             logoImageView.heightAnchor.constraint(equalToConstant: 200) // height

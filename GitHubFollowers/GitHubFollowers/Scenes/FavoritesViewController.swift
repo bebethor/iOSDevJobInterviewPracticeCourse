@@ -85,9 +85,7 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     // Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let favoriteFollower = favoritesFollowers[indexPath.row]
-        let destinationVC    = FollowersViewController()
-        destinationVC.username = favoriteFollower.login
-        destinationVC.title    = favoriteFollower.login
+        let destinationVC    = FollowersViewController(username: favoriteFollower.login)
         
         navigationController?.pushViewController(destinationVC, animated: true)
     }

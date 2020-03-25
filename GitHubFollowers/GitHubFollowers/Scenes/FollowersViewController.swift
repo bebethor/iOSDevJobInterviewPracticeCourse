@@ -28,6 +28,17 @@ class FollowersViewController: UIViewController {
     var hasMoreFollowers: Bool = true
     var isSearching: Bool = false
     
+    // MARK: - Initializers -
+    init(username: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.username   = username
+        title           = username
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Lyfe cycle -
     override func viewDidLoad() {
         super.viewDidLoad()

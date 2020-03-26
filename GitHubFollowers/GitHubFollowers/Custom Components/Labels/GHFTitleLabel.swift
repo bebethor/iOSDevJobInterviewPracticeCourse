@@ -10,6 +10,7 @@ import UIKit
 
 class GHFTitleLabel: UILabel {
     
+    // Designated init. This is call from the Convenience init
     override init(frame: CGRect) {
         super.init(frame: frame)
         // Custom code
@@ -20,12 +21,11 @@ class GHFTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Custom initializer
-    init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
-        super.init(frame: .zero)
+    // Convenience initializer
+    convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+        self.init(frame: .zero)
         self.textAlignment = textAlignment
         self.font = UIFont.systemFont(ofSize: fontSize, weight: .bold)
-        configure()
     }
     
     private func configure() {

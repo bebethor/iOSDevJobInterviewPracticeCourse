@@ -15,13 +15,12 @@ class GHFFavoriteTableViewCell: UITableViewCell {
     let avatarImageView  = GHFImageView(frame: .zero)
     let userNameLabel    = GHFTitleLabel(textAlignment: .left, fontSize:16)
     
+    // MARK: - Inits -
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         configure()
     }
     
-    // MARK: - Inits -
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

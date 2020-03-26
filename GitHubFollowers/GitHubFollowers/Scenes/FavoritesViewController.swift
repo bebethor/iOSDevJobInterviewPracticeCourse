@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: GHFBaseViewController {
     
     // MARK: - UI Elements -
     let tableView = UITableView()

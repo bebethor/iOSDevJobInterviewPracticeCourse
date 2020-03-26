@@ -76,9 +76,10 @@ class NetworkManager {
             
             // Parse JSON
             do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let user = try decoder.decode(User.self, from: data)
+                let decoder                     = JSONDecoder()
+                decoder.keyDecodingStrategy     = .convertFromSnakeCase
+                decoder.dateDecodingStrategy    = .iso8601
+                let user                        = try decoder.decode(User.self, from: data)
                 completion(.success(user))
             } catch {
                 completion(.failure(.invalidData))

@@ -27,6 +27,7 @@ class FollowersViewController: BaseViewController {
     var page: Int = 1
     var hasMoreFollowers: Bool = true
     var isSearching: Bool = false
+    var isLoadingMoreFollowers = false
     
     // MARK: - Initializers -
     init(username: String) {
@@ -81,6 +82,7 @@ class FollowersViewController: BaseViewController {
     // MARK: - Functions -
     func getFollowers(username: String, page: Int) {
         showLoading()
+        isLoadingMoreFollowers = true
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] (result) in
             guard let self = self else { return }
             self.dismissLoading()
@@ -99,6 +101,7 @@ class FollowersViewController: BaseViewController {
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
+            self.isLoadingMoreFollowers = false
         }
     }
     
@@ -155,7 +158,7 @@ extension FollowersViewController: UICollectionViewDelegate {
         
         // Detect the bottom of the scrollView
         if offsetY > contentHeight - height {
-            guard hasMoreFollowers else { return }
+            guard hasMoreFollowers, !isLoadingMoreFollowers else { return }
             page += 1
             getFollowers(username: username, page: page)
         }
@@ -197,7 +200,7 @@ extension FollowersViewController: FollowersViewControllerDelegate {
         page          = 1
         followers.removeAll()
         filteredFollowers.removeAll()
-        collectionView.setContentOffset(.zero, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         getFollowers(username: username, page: page )
     }
 }

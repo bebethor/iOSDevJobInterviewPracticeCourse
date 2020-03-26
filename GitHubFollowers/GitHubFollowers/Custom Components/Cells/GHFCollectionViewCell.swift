@@ -34,7 +34,10 @@ class GHFCollectionViewCell: UICollectionViewCell {
     // MARK: - Configure UI functions -
     func set(follower: Follower) {
         userNameLabel.text = follower.login
-        avatarImageView.downLoadImage(from: follower.avatarUrl)
+        NetworkManager.shared.downloadImage(from: follower.avatarUrl) { [ weak self ] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async { self.avatarImageView.image = image }
+        }
     }
     
     private func configure() {

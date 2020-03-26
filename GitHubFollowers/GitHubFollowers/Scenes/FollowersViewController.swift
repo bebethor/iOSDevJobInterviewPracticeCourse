@@ -12,7 +12,7 @@ protocol FollowersViewControllerDelegate: class {
     func didRequestFollowers(for userName: String)
 }
 
-class FollowersViewController: UIViewController {
+class FollowersViewController: GHFBaseViewController {
     
     enum Section { case main }
     

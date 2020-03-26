@@ -13,7 +13,7 @@ protocol UserInfoViewControllerDelegate: class {
     func didTapGetFollowersButton(for user: User)
 }
 
-class UserInfoViewController: UIViewController {
+class UserInfoViewController: GHFBaseViewController {
     
     // MARK: - IBOUTLETS -
     let headerContainerView          = UIView()
@@ -100,20 +100,16 @@ class UserInfoViewController: UIViewController {
     }
     
     func configureUIElements(with user: User) {
-        // Add header
-        self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView)
-        
-        // Add repo item view
-        let repoViewController      = GHFReposItemViewController(user: user)
-        repoViewController.delegate = self
-        self.add(childVC: repoViewController, to: self.itemViewOneContainer)
-        
-        // Add follower item view
+        let repoItemViewController          = GHFReposItemViewController(user: user)
+        repoItemViewController.delegate     = self
+         
         let followerItemViewController      = GHFFollowerItemViewController(user: user)
         followerItemViewController.delegate = self
-        self.add(childVC:followerItemViewController, to: self.itemViewTwoContainer)
         
-        self.dateLabel.text = "Github Since \(user.createdAt.convertDateToDisplayFormat())"
+        self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView) // Add header
+        self.add(childVC: repoItemViewController, to: self.itemViewOneContainer) // Add repo item view
+        self.add(childVC:followerItemViewController, to: self.itemViewTwoContainer) // Add follower item view
+        self.dateLabel.text = "Github since \(user.createdAt.convertToMonthYearFormat())"
     }
 }
 

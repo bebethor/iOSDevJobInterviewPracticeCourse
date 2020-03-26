@@ -20,10 +20,9 @@ class GHFBodyLabel: UILabel {
     }
     
     // Custom initializer
-    init(textAligment: NSTextAlignment) {
-        super.init(frame: .zero)
+    convenience init(textAligment: NSTextAlignment) {
+        self.init(frame: .zero)
         self.textAlignment = textAligment
-        configure()
     }
     
     private func configure() {

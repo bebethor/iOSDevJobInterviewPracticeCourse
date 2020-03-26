@@ -15,13 +15,12 @@ class GHFFavoriteTableViewCell: UITableViewCell {
     let avatarImageView  = GHFImageView(frame: .zero)
     let userNameLabel    = GHFTitleLabel(textAlignment: .left, fontSize:16)
     
+    // MARK: - Inits -
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         configure()
     }
     
-    // MARK: - Inits -
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -29,7 +28,10 @@ class GHFFavoriteTableViewCell: UITableViewCell {
     // MARK: - Configure UI functions -
     func set(favorite: Follower) {
         userNameLabel.text = favorite.login
-        avatarImageView.downLoadImage(from: favorite.avatarUrl)
+        NetworkManager.shared.downloadImage(from: favorite.avatarUrl) { [ weak self ] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async { self.avatarImageView.image = image }
+        }
     }
     
     func configure() {

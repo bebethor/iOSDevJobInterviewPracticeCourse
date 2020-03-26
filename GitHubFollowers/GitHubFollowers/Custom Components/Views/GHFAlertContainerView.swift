@@ -1,21 +1,19 @@
 //
-//  GHFImageView.swift
+//  GHFAlertContainerView.swift
 //  GitHubFollowers
 //
-//  Created by Jose Alberto on 19/02/2020.
+//  Created by Jose Alberto Ruíz-Carrillo González on 26/03/2020.
 //  Copyright © 2020 JARCG. All rights reserved.
 //
 
 import UIKit
 
-class GHFImageView: UIImageView {
+class GHFAlertContainerView: UIView {
+
     
-    let placeHolderImage = UIImage(named: "avatar-placeholder")!
-    let cache = NetworkManager.shared.cache
-    
+    // MARK: - Inits -
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // Custom code here
         configure()
     }
     
@@ -24,9 +22,10 @@ class GHFImageView: UIImageView {
     }
     
     private func configure() {
-        layer.cornerRadius  = 10
-        clipsToBounds       = true
-        image               = placeHolderImage
+        backgroundColor    = .systemBackground
+        layer.cornerRadius = 16
+        layer.borderWidth  = 2
+        layer.borderColor  = UIColor.white.cgColor
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

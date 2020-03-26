@@ -28,7 +28,10 @@ class GHFFavoriteTableViewCell: UITableViewCell {
     // MARK: - Configure UI functions -
     func set(favorite: Follower) {
         userNameLabel.text = favorite.login
-        avatarImageView.downLoadImage(from: favorite.avatarUrl)
+        NetworkManager.shared.downloadImage(from: favorite.avatarUrl) { [ weak self ] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async { self.avatarImageView.image = image }
+        }
     }
     
     func configure() {

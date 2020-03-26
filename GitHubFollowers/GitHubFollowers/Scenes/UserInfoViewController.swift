@@ -109,7 +109,7 @@ class UserInfoViewController: UIViewController {
         self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView) // Add header
         self.add(childVC: repoItemViewController, to: self.itemViewOneContainer) // Add repo item view
         self.add(childVC:followerItemViewController, to: self.itemViewTwoContainer) // Add follower item view
-        self.dateLabel.text = "github since \(user.createdAt.convertToMonthYearFormat())"
+        self.dateLabel.text = "Github since \(user.createdAt.convertToMonthYearFormat())"
     }
 }
 

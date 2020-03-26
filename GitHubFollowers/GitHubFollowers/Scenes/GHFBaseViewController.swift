@@ -14,11 +14,8 @@ class GHFBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
-
     func showLoading() {
         containerView = UIView(frame: view.bounds)
         view.addSubview(containerView)
@@ -53,5 +50,4 @@ class GHFBaseViewController: UIViewController {
         emptyStateView.frame    = view.bounds
         view.addSubview(emptyStateView)
     }
-
 }

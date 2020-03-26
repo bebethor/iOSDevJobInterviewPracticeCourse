@@ -19,7 +19,9 @@ enum SFSymbols {
 
 //MARK: - Images -
 enum Images {
-    static let ghLogo = UIImage(named: "gh-logo")
+    static let ghLogo               = UIImage(named: "gh-logo")
+    static let avatarPlaceholder    = UIImage(named: "avatar-placeholder")
+    static let emptyStateLogo       = UIImage(named: "empty-state-logo")
 }
 
 //MARK: - Screen Sizes -

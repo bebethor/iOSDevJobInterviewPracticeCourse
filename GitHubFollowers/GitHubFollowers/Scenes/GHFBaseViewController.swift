@@ -1,5 +1,5 @@
 //
-//  GHFBaseViewController.swift
+//  BaseViewController.swift
 //  GitHubFollowers
 //
 //  Created by Jose Alberto Ruíz-Carrillo González on 26/03/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GHFBaseViewController: UIViewController {
+class BaseViewController: UIViewController {
 
     var containerView: UIView!
     

@@ -12,7 +12,7 @@ protocol FollowersViewControllerDelegate: class {
     func didRequestFollowers(for userName: String)
 }
 
-class FollowersViewController: GHFBaseViewController {
+class FollowersViewController: BaseViewController {
     
     enum Section { case main }
     
@@ -73,7 +73,6 @@ class FollowersViewController: GHFBaseViewController {
     func configureSearchController() {
         let searchController                                   = UISearchController()
         searchController.searchResultsUpdater                  = self
-        searchController.searchBar.delegate                    = self
         searchController.searchBar.placeholder                 = "Search Username"
         searchController.obscuresBackgroundDuringPresentation  = false
         navigationItem.searchController                        = searchController
@@ -176,18 +175,18 @@ extension FollowersViewController: UICollectionViewDelegate {
     }
 }
 
-extension FollowersViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension FollowersViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else {
+            filteredFollowers.removeAll()
+            updateData(on: followers)
+            isSearching = false
+            return
+        }
         isSearching       = true
         // $0.represents a follower.
         filteredFollowers = followers.filter( { return $0.login.lowercased().contains(filter.lowercased()) } )
         updateData(on: filteredFollowers)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearching = false
-        updateData(on: self.followers)
     }
 }
 

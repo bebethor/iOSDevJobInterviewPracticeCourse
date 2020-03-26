@@ -13,7 +13,7 @@ protocol UserInfoViewControllerDelegate: class {
     func didTapGetFollowersButton(for user: User)
 }
 
-class UserInfoViewController: GHFBaseViewController {
+class UserInfoViewController: BaseViewController {
     
     // MARK: - IBOUTLETS -
     let headerContainerView          = UIView()

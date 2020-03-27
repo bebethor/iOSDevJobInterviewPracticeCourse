@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol GHFReposItemViewControllerDelegate: class {
+    func didTapGitHubProfileButton(for user: User)
+}
+
 class GHFReposItemViewController: GHFItemInfoViewController {
+    
+    weak var delegate: GHFReposItemViewControllerDelegate!
 
     // MARK: - Lyfe Cycle -
     override func viewDidLoad() {

@@ -8,6 +8,11 @@
 
 import UIKit
 
+//protocol ItemInfoViewControllerDelegate: class {
+//    func didTapGitHubProfileButton(for user: User)
+//    func didTapGetFollowersButton(for user: User)
+//}
+
 class GHFItemInfoViewController: UIViewController {
     
     // MARK: - UIElements -
@@ -18,7 +23,6 @@ class GHFItemInfoViewController: UIViewController {
     
     // MARK: - Properties -
     var user: User!
-    weak var delegate: UserInfoViewControllerDelegate!
     
     // MARK: - Inits -
     init(user: User) {

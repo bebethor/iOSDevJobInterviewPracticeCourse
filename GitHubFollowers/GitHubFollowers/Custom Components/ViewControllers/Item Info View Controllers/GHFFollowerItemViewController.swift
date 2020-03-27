@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol GHFFollowerItemViewControllerDelegate: class {
+    func didTapGetFollowersButton(for user: User)
+}
+
 class GHFFollowerItemViewController: GHFItemInfoViewController {
+    
+    weak var delegate: GHFFollowerItemViewControllerDelegate!
     
     // MARK: - Lyfe Cycle -
     override func viewDidLoad() {

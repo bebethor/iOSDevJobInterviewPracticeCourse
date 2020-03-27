@@ -9,8 +9,7 @@
 import UIKit
 
 protocol UserInfoViewControllerDelegate: class {
-    func didTapGitHubProfileButton(for user: User)
-    func didTapGetFollowersButton(for user: User)
+    func didRequestFollowers(for userName: String)
 }
 
 class UserInfoViewController: BaseViewController {
@@ -24,7 +23,7 @@ class UserInfoViewController: BaseViewController {
     // MARK: - PROPERTIES -
     var itemViewsArray = [UIView]()
     var username: String!
-    weak var delegate: FollowersViewControllerDelegate!
+    weak var delegate: UserInfoViewControllerDelegate!
 
     // MARK: - LYFE CYCLE -
     override func viewDidLoad() {
@@ -113,7 +112,7 @@ class UserInfoViewController: BaseViewController {
     }
 }
 
-extension UserInfoViewController: UserInfoViewControllerDelegate {
+extension UserInfoViewController: GHFReposItemViewControllerDelegate {
     func didTapGitHubProfileButton(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
             presentGHFAlertOnMainThreat(title: "Invalid URL", message: "The URL attached to this user is invalid", buttonTitle: "Ok")
@@ -121,13 +120,15 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
         }
         self.showSafariViewController(with: url)
     }
-    
+}
+
+extension UserInfoViewController: GHFFollowerItemViewControllerDelegate {
     func didTapGetFollowersButton(for user: User) {
         guard user.followers != 0 else {
             presentGHFAlertOnMainThreat(title: "No followers", message: "This user has no followers...☹️", buttonTitle: "Ok")
             return
         }
-    
+
         delegate.didRequestFollowers(for: user.login)
         dissmisVC()
     }

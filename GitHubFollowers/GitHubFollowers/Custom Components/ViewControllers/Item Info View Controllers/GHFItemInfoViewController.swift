@@ -65,8 +65,8 @@ class GHFItemInfoViewController: UIViewController {
         view.addSubview(actionButton)
         
         let padding: CGFloat = 20
-        
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),

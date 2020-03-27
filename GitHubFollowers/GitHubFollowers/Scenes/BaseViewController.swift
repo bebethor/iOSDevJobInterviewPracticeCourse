@@ -11,6 +11,7 @@ import UIKit
 class BaseViewController: UIViewController {
 
     var containerView: UIView!
+    let activityIndicator = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class BaseViewController: UIViewController {
         
         UIView.animate(withDuration: 0.25) { self.containerView.alpha = 0.8 }
         
-        let activityIndicator = UIActivityIndicatorView(style: .large)
+        
         containerView.addSubview(activityIndicator)
         activityIndicator.color = .systemRed
         

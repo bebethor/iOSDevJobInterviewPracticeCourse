@@ -60,9 +60,8 @@ class GHFItemInfoViewController: UIViewController {
     // this func is overriden in the GHFItemInfoViewController subclasses (GHFReposItemViewController, GHFFollowerItemViewController)
     @objc func actionButtonTapped() {}
     
-    private func autoLayoutUI() {
-        view.addSubview(stackView)
-        view.addSubview(actionButton)
+    private func autoLayoutUI() {        
+        view.addSubviews(stackView, actionButton)
         
         let padding: CGFloat = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false

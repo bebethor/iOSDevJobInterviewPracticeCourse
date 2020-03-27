@@ -34,11 +34,7 @@ class GHFItemInfoView: UIView {
     
     // MARK: - Configure Functions -
     func configure() {
-        uiItemsArray = [symbolImageView, titleLabel, countLabel]
-        
-        for item in self.uiItemsArray {
-            addSubview(item)
-        }
+        addSubviews(symbolImageView, titleLabel, countLabel)
         
         configureSymbolImageView()
         configureTitleLabel()

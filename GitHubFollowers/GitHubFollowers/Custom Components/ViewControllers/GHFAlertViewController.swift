@@ -38,6 +38,7 @@ class GHFAlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+        view.addSubviews(containerView, titleLabel, actionButton, messageLabel)
         configureContainerView()
         configureTitleLabel()
         configureActionButton()
@@ -46,7 +47,6 @@ class GHFAlertViewController: UIViewController {
     
     // MARK: - Configure UI -
     func configureContainerView() {
-        view.addSubview(containerView)
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor), // Center vertically
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -56,7 +56,6 @@ class GHFAlertViewController: UIViewController {
     }
     
     func configureTitleLabel() {
-        containerView.addSubview(titleLabel)
         titleLabel.text = alertTitle ?? "Something went wrong"
         
         NSLayoutConstraint.activate([
@@ -68,7 +67,6 @@ class GHFAlertViewController: UIViewController {
     }
     
     func configureActionButton() {
-        containerView.addSubview(actionButton)
         actionButton.setTitle(buttonTitle ?? "OK", for: .normal)
         actionButton.addTarget(self, action: #selector(dissmissViewController), for: .touchUpInside)
         
@@ -81,7 +79,6 @@ class GHFAlertViewController: UIViewController {
     }
     
     func configureMessageLabel() {
-        containerView.addSubview(messageLabel)
         messageLabel.text           = message ?? "Something went wrong"
         messageLabel.numberOfLines  = 4
         

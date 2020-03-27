@@ -9,8 +9,7 @@
 import UIKit
 
 protocol UserInfoViewControllerDelegate: class {
-    func didTapGitHubProfileButton(for user: User)
-    func didTapGetFollowersButton(for user: User)
+    func didRequestFollowers(for userName: String)
 }
 
 class UserInfoViewController: BaseViewController {
@@ -24,7 +23,7 @@ class UserInfoViewController: BaseViewController {
     // MARK: - PROPERTIES -
     var itemViewsArray = [UIView]()
     var username: String!
-    weak var delegate: FollowersViewControllerDelegate!
+    weak var delegate: UserInfoViewControllerDelegate!
 
     // MARK: - LYFE CYCLE -
     override func viewDidLoad() {
@@ -60,7 +59,7 @@ class UserInfoViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             headerContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-            headerContainerView.heightAnchor.constraint(equalToConstant: 180),
+            headerContainerView.heightAnchor.constraint(equalToConstant: 210),
             
             itemViewOneContainer.topAnchor.constraint(equalTo: headerContainerView.bottomAnchor, constant: padding),
             itemViewOneContainer.heightAnchor.constraint(equalToConstant: itemHeight),
@@ -69,7 +68,7 @@ class UserInfoViewController: BaseViewController {
             itemViewTwoContainer.heightAnchor.constraint(equalToConstant: itemHeight),
             
             dateLabel.topAnchor.constraint(equalTo: itemViewTwoContainer.bottomAnchor, constant: padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: 18)
+            dateLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -99,21 +98,15 @@ class UserInfoViewController: BaseViewController {
         }
     }
     
-    func configureUIElements(with user: User) {
-        let repoItemViewController          = GHFReposItemViewController(user: user)
-        repoItemViewController.delegate     = self
-         
-        let followerItemViewController      = GHFFollowerItemViewController(user: user)
-        followerItemViewController.delegate = self
-        
+    func configureUIElements(with user: User) {    
         self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView) // Add header
-        self.add(childVC: repoItemViewController, to: self.itemViewOneContainer) // Add repo item view
-        self.add(childVC:followerItemViewController, to: self.itemViewTwoContainer) // Add follower item view
+        self.add(childVC: GHFReposItemViewController(user: user, delegate: self), to: self.itemViewOneContainer) // Add repo item view
+        self.add(childVC:GHFFollowerItemViewController(user: user, delegate: self), to: self.itemViewTwoContainer) // Add follower item view
         self.dateLabel.text = "Github since \(user.createdAt.convertToMonthYearFormat())"
     }
 }
 
-extension UserInfoViewController: UserInfoViewControllerDelegate {
+extension UserInfoViewController: GHFReposItemViewControllerDelegate {
     func didTapGitHubProfileButton(for user: User) {
         guard let url = URL(string: user.htmlUrl) else {
             presentGHFAlertOnMainThreat(title: "Invalid URL", message: "The URL attached to this user is invalid", buttonTitle: "Ok")
@@ -121,13 +114,15 @@ extension UserInfoViewController: UserInfoViewControllerDelegate {
         }
         self.showSafariViewController(with: url)
     }
-    
+}
+
+extension UserInfoViewController: GHFFollowerItemViewControllerDelegate {
     func didTapGetFollowersButton(for user: User) {
         guard user.followers != 0 else {
             presentGHFAlertOnMainThreat(title: "No followers", message: "This user has no followers...☹️", buttonTitle: "Ok")
             return
         }
-    
+
         delegate.didRequestFollowers(for: user.login)
         dissmisVC()
     }

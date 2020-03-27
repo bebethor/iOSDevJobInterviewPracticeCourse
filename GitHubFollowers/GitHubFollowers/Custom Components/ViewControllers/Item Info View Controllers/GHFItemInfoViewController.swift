@@ -8,6 +8,11 @@
 
 import UIKit
 
+//protocol ItemInfoViewControllerDelegate: class {
+//    func didTapGitHubProfileButton(for user: User)
+//    func didTapGetFollowersButton(for user: User)
+//}
+
 class GHFItemInfoViewController: UIViewController {
     
     // MARK: - UIElements -
@@ -18,7 +23,6 @@ class GHFItemInfoViewController: UIViewController {
     
     // MARK: - Properties -
     var user: User!
-    weak var delegate: UserInfoViewControllerDelegate!
     
     // MARK: - Inits -
     init(user: User) {
@@ -60,13 +64,12 @@ class GHFItemInfoViewController: UIViewController {
     // this func is overriden in the GHFItemInfoViewController subclasses (GHFReposItemViewController, GHFFollowerItemViewController)
     @objc func actionButtonTapped() {}
     
-    private func autoLayoutUI() {
-        view.addSubview(stackView)
-        view.addSubview(actionButton)
+    private func autoLayoutUI() {        
+        view.addSubviews(stackView, actionButton)
         
         let padding: CGFloat = 20
-        
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),

@@ -8,7 +8,22 @@
 
 import UIKit
 
+protocol GHFFollowerItemViewControllerDelegate: class {
+    func didTapGetFollowersButton(for user: User)
+}
+
 class GHFFollowerItemViewController: GHFItemInfoViewController {
+    
+    weak var delegate: GHFFollowerItemViewControllerDelegate!
+    
+    init(user: User, delegate: GHFFollowerItemViewControllerDelegate) {
+        super.init(user: user)
+        self.delegate = delegate
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Lyfe Cycle -
     override func viewDidLoad() {

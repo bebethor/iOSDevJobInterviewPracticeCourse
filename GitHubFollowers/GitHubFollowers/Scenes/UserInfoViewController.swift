@@ -98,16 +98,10 @@ class UserInfoViewController: BaseViewController {
         }
     }
     
-    func configureUIElements(with user: User) {
-        let repoItemViewController          = GHFReposItemViewController(user: user)
-        repoItemViewController.delegate     = self
-         
-        let followerItemViewController      = GHFFollowerItemViewController(user: user)
-        followerItemViewController.delegate = self
-        
+    func configureUIElements(with user: User) {    
         self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView) // Add header
-        self.add(childVC: repoItemViewController, to: self.itemViewOneContainer) // Add repo item view
-        self.add(childVC:followerItemViewController, to: self.itemViewTwoContainer) // Add follower item view
+        self.add(childVC: GHFReposItemViewController(user: user, delegate: self), to: self.itemViewOneContainer) // Add repo item view
+        self.add(childVC:GHFFollowerItemViewController(user: user, delegate: self), to: self.itemViewTwoContainer) // Add follower item view
         self.dateLabel.text = "Github since \(user.createdAt.convertToMonthYearFormat())"
     }
 }

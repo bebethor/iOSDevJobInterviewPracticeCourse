@@ -19,6 +19,8 @@ class UserInfoViewController: BaseViewController {
     let itemViewOneContainer         = UIView()
     let itemViewTwoContainer         = UIView()
     let dateLabel                    = GHFBodyLabel(textAligment: .center)
+    let scrollView                   = UIScrollView()
+    let contentView                  = UIView()
     
     // MARK: - PROPERTIES -
     var itemViewsArray = [UIView]()
@@ -39,6 +41,26 @@ class UserInfoViewController: BaseViewController {
         title = username
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dissmisVC))
         navigationItem.rightBarButtonItem = doneButton
+    }
+    
+    func configureScrollView() {
+        view.addSubviews(scrollView)
+        scrollView.addSubviews(contentView)
+        scrollView.pinToEdges(of: self.view)
+        contentView.pinToEdges(of: scrollView)
+        
+        // El contentView siempre tiene que saber un alto y un ancho explícito.
+        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 2000)
+        ])
+    }
+    
+    func configureUIElements(with user: User) {
+        self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView) // Add header
+        self.add(childVC: GHFReposItemViewController(user: user, delegate: self), to: self.itemViewOneContainer) // Add repo item view
+        self.add(childVC:GHFFollowerItemViewController(user: user, delegate: self), to: self.itemViewTwoContainer) // Add follower item view
+        self.dateLabel.text = "Github since \(user.createdAt.convertToMonthYearFormat())"
     }
     
     func autolayoutUI() {
@@ -96,13 +118,6 @@ class UserInfoViewController: BaseViewController {
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
-    }
-    
-    func configureUIElements(with user: User) {    
-        self.add(childVC: GHFUserInfoHeaderViewController(user: user), to: self.headerContainerView) // Add header
-        self.add(childVC: GHFReposItemViewController(user: user, delegate: self), to: self.itemViewOneContainer) // Add repo item view
-        self.add(childVC:GHFFollowerItemViewController(user: user, delegate: self), to: self.itemViewTwoContainer) // Add follower item view
-        self.dateLabel.text = "Github since \(user.createdAt.convertToMonthYearFormat())"
     }
 }
 

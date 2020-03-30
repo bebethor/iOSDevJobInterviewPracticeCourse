@@ -25,7 +25,6 @@ class BaseViewController: UIViewController {
         
         UIView.animate(withDuration: 0.25) { self.containerView.alpha = 0.8 }
         
-        
         containerView.addSubview(activityIndicator)
         activityIndicator.color = .systemRed
         

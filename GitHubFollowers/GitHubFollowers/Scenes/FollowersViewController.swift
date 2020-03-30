@@ -18,12 +18,12 @@ class FollowersViewController: BaseViewController {
     // MARK: - Properties -
     var username: String!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
-    var followers: [Follower] = []
+    var followers: [Follower]         = []
     var filteredFollowers: [Follower] = []
-    var page: Int = 1
-    var hasMoreFollowers: Bool = true
-    var isSearching: Bool = false
-    var isLoadingMoreFollowers = false
+    var page: Int                     = 1
+    var hasMoreFollowers: Bool        = true
+    var isSearching: Bool             = false
+    var isLoadingMoreFollowers        = false
     
     // MARK: - Initializers -
     init(username: String) {
@@ -82,22 +82,39 @@ class FollowersViewController: BaseViewController {
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] (result) in
             guard let self = self else { return }
             self.dismissLoading()
+            
             switch result {
             case .success(let followers):
-                if followers.count < 100 { self.hasMoreFollowers = false }
-                self.followers.append(contentsOf: followers)
-                
-                if self.followers.isEmpty {
-                    let message = "This user doesn´t have followers. Go follow this user!!"
-                    DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
-                    return
-                }
-                
-                self.updateData(on: self.followers)
+                self.updateUI(with: followers)
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
             }
             self.isLoadingMoreFollowers = false
+        }
+    }
+    
+    // MARK: - Functions -
+    func updateUI(with followers: [Follower]) {
+        if followers.count < 100 { self.hasMoreFollowers = false }
+        self.followers.append(contentsOf: followers)
+        
+        if self.followers.isEmpty {
+            let message = "This user doesn´t have followers. Go follow this user!!"
+            DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+            return
+        }
+        
+        self.updateData(on: self.followers)
+    }
+    
+    func addUserToFavorites(user: User) {
+        let favoriteFollower = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        PersistanceManager.updateWith(favorite: favoriteFollower, actionType: .add) { error in
+            guard let error = error else {
+                self.presentGHFAlertOnMainThreat(title: "Succes!!!", message: "You have successfully favorited this user 🎉!!!", buttonTitle: "Ok")
+                return
+            }
+            self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
         }
     }
     
@@ -130,14 +147,7 @@ class FollowersViewController: BaseViewController {
             self.dismissLoading()
             switch result {
             case .success(let user):
-                let favoriteFollower = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                PersistanceManager.updateWith(favorite: favoriteFollower, actionType: .add) { error in
-                    guard let error = error else {
-                        self.presentGHFAlertOnMainThreat(title: "Succes!!!", message: "You have successfully favorited this user 🎉!!!", buttonTitle: "Ok")
-                        return
-                    }
-                    self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
-                }
+                self.addUserToFavorites(user: user)
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }

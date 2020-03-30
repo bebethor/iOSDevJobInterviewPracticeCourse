@@ -28,7 +28,7 @@ class FavoritesViewController: BaseViewController {
         getFavorites()
     }
     
-    // MARK: - Functions -
+    // MARK: - Configure UI -
     func configureViewController() {
         view.backgroundColor = .systemBackground
         title                = "Favorites"
@@ -46,22 +46,27 @@ class FavoritesViewController: BaseViewController {
         tableView.register(GHFFavoriteTableViewCell.self, forCellReuseIdentifier: GHFFavoriteTableViewCell.reuseID)
     }
     
+    // MARK: - Functions -
     func getFavorites() {
         PersistanceManager.retrieveFavorites { [ weak self ] result in
             guard let self = self else { return }
             switch result {
             case .success(let favorites):
-                if favorites.isEmpty {
-                    self.showEmptyStateView(with: "No favorites\nAdd one on the follower screen.", in: self.view)
-                } else {
-                    self.favoritesFollowers = favorites
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.view.bringSubviewToFront(self.tableView)
-                    }
-                }
+                self.upateUI(with: favorites)
             case .failure(let error):
                 self.presentGHFAlertOnMainThreat(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+            }
+        }
+    }
+    
+    func upateUI(with favorites: [Follower]) {
+        if favorites.isEmpty {
+            self.showEmptyStateView(with: "No favorites\nAdd one on the follower screen.", in: self.view)
+        } else {
+            self.favoritesFollowers = favorites
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.view.bringSubviewToFront(self.tableView)
             }
         }
     }

@@ -24,6 +24,7 @@
 		2C8C9DB623FABE1A00675C30 /* GHFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB523FABE1A00675C30 /* GHFBodyLabel.swift */; };
 		2C8C9DB823FAC6A200675C30 /* GHFAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */; };
 		2C8C9DBA23FAE6FD00675C30 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C9DB923FAE6FD00675C30 /* UIViewController+Extension.swift */; };
+		2C952C902431EFF400675EF0 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C952C8F2431EFF400675EF0 /* UITableView+Extension.swift */; };
 		2CA7FB922416602F0025C9C4 /* GHFItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7FB912416602F0025C9C4 /* GHFItemInfoViewController.swift */; };
 		2CA7FB9424167B390025C9C4 /* GHFReposItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7FB9324167B390025C9C4 /* GHFReposItemViewController.swift */; };
 		2CA7FB9624168E510025C9C4 /* GHFFollowerItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7FB9524168E510025C9C4 /* GHFFollowerItemViewController.swift */; };
@@ -75,6 +76,7 @@
 		2C8C9DB523FABE1A00675C30 /* GHFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFBodyLabel.swift; sourceTree = "<group>"; };
 		2C8C9DB723FAC6A200675C30 /* GHFAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFAlertViewController.swift; sourceTree = "<group>"; };
 		2C8C9DB923FAE6FD00675C30 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		2C952C8F2431EFF400675EF0 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		2CA7FB912416602F0025C9C4 /* GHFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFItemInfoViewController.swift; sourceTree = "<group>"; };
 		2CA7FB9324167B390025C9C4 /* GHFReposItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFReposItemViewController.swift; sourceTree = "<group>"; };
 		2CA7FB9524168E510025C9C4 /* GHFFollowerItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHFFollowerItemViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				2CA7FB98241782A90025C9C4 /* Date+Extension.swift */,
 				2CA7FB9A241796F30025C9C4 /* String+Extension.swift */,
 				2CD7E57A242E283F002ECB34 /* UIView+Extension.swift */,
+				2C952C8F2431EFF400675EF0 /* UITableView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				2CD7E57B242E283F002ECB34 /* UIView+Extension.swift in Sources */,
 				2CFE5F4B24111F6B00F2FD23 /* Constants.swift in Sources */,
 				BF553C0A23F2B30900AD3667 /* GHFTitleLabel.swift in Sources */,
+				2C952C902431EFF400675EF0 /* UITableView+Extension.swift in Sources */,
 				2C42C09223FE990F00FD6B93 /* UIHelper.swift in Sources */,
 				2CA7FB9424167B390025C9C4 /* GHFReposItemViewController.swift in Sources */,
 				2CA7FB922416602F0025C9C4 /* GHFItemInfoViewController.swift in Sources */,

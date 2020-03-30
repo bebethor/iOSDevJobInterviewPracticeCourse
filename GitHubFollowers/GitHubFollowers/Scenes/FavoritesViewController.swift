@@ -41,6 +41,7 @@ class FavoritesViewController: BaseViewController {
         tableView.rowHeight     = 80
         tableView.delegate      = self
         tableView.dataSource    = self
+        tableView.removeExcesCells()
         
         tableView.register(GHFFavoriteTableViewCell.self, forCellReuseIdentifier: GHFFavoriteTableViewCell.reuseID)
     }
@@ -94,12 +95,14 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         guard editingStyle == .delete else { return }
         
         let favorite = favoritesFollowers[indexPath.row]
-        favoritesFollowers.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
         
         PersistanceManager.updateWith(favorite: favorite, actionType: .remove) { [ weak self ] error in
             guard let self = self else { return }
-            guard let error = error else { return }
+            guard let error = error else {
+                self.favoritesFollowers.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
+                return
+            }
             self.presentGHFAlertOnMainThreat(title: "Unable to remove", message: error.rawValue, buttonTitle: "Ok")
         }
     }
